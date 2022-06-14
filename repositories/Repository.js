@@ -1,4 +1,4 @@
-import UserRepository from './userRepository'
+import UserRepository from './UserRepository'
 
 export default ($axios) => ({
   user: UserRepository($axios),
