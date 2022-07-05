@@ -1,0 +1,29 @@
+.card-item {
+  display: flex;
+  flex-direction: column;
+  width: 152px;
+  height: 152px;
+  margin: auto;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 70%;
+    border-radius: 8px 8px 0 0;
+  }
+
+  &__under {
+    display: flex;
+    height: 30%;
+    background-color: #7d9d9c;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+@media only screen and (max-width: $bp-sm) {
+  .card-item {
+    width: 112px;
+    height: 112px;
+  }
+}
