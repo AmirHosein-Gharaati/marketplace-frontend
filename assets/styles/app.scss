@@ -1,0 +1,47 @@
+@import './variables.scss';
+
+// utility
+@import './utility/button.scss';
+
+// pages
+@import './page/index.scss';
+
+// components
+@import './component/card.scss';
+
+html {
+  overflow-y: auto !important;
+}
+
+button {
+  text-transform: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  border-radius: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: lighten(rgb(255, 255, 255), 5%);
+  border-radius: 12px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: lighten(rgb(44, 0, 85), 15%);
+  border-radius: 12px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+ul {
+  list-style-type: none !important;
+}
+
+a {
+  text-decoration-line: none !important;
+  color: white !important;
+}
