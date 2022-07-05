@@ -1,5 +1,5 @@
 .home {
-  .main {
+  &__main {
     display: flex;
     align-items: center;
     width: 100%;
@@ -22,7 +22,7 @@
 
 @media only screen and (max-width: $bp-sm) {
   .home {
-    .main {
+    &__main {
       flex-direction: column;
 
       &__img {
