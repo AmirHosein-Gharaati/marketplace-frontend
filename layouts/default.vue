@@ -1,8 +1,49 @@
 <template>
   <v-app>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-toolbar-title v-text="title" />
+    <v-app-bar height="80" fixed elevate-on-scroll color="#e4dccf" class="d-flex align-center px-8">
+      <v-app-bar-nav-icon @click="drawer = true"> </v-app-bar-nav-icon>
+      <span class="ml-n2 mr-2 font-weight-bold">Categories</span>
+
+      <router-link
+        v-for="route in routes"
+        :key="route.name"
+        :to="route.to"
+        class="px-4"
+        >{{ route.name }}</router-link
+      >
+      <v-autocomplete
+        v-model="searchModel"
+        color="white"
+        label="MarketPlace!"
+        placeholder="Start typing to Search"
+        prepend-icon="mdi-magnify"
+        return-object
+        solo
+      ></v-autocomplete>
     </v-app-bar>
+
+    <v-navigation-drawer v-model="drawer" absolute temporary>
+      <v-list nav dense>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Account</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
     <v-main>
       <Nuxt />
     </v-main>
@@ -21,6 +62,19 @@ export default {
       clipped: false,
       fixed: false,
       title: 'Marketplace',
+      drawer: false,
+      group: null,
+      searchModel: null,
+      routes: [
+        {
+          name: 'Products',
+          to: '/products',
+        },
+        {
+          name: 'FAQ',
+          to: '/faq',
+        },
+      ],
     }
   },
 }
