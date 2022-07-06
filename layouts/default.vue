@@ -6,8 +6,9 @@
     <v-main>
       <Nuxt />
     </v-main>
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer height="180" :absolute="!fixed" app class="footer">
+      <h2 class="pb-8">All rights reserved</h2>
+      <h3>Mahmoud, Amirhosein, Hosein</h3>
     </v-footer>
   </v-app>
 </template>
