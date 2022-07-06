@@ -1,6 +1,13 @@
 <template>
   <v-app>
-    <v-app-bar height="80" fixed elevate-on-scroll color="#e4dccf" class="px-8">
+    <v-app-bar
+      height="80"
+      fixed
+      elevate-on-scroll
+      color="#e4dccf"
+      class="px-8"
+      app
+    >
       <div class="navbar-wrapper">
         <div class="navbar__left">
           <v-app-bar-nav-icon @click="drawer = true"> </v-app-bar-nav-icon>
