@@ -36,7 +36,18 @@
 
         <div class="navbar__right">
           <v-btn icon elevation="0"><v-icon>mdi-cart</v-icon></v-btn>
-          <v-btn icon elevation="0"><v-icon>mdi-account</v-icon></v-btn>
+          <v-menu offset-y transition="slide-y-transition" bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon elevation="0" v-bind="attrs" v-on="on"
+                ><v-icon>mdi-account</v-icon></v-btn
+              >
+            </template>
+            <v-list>
+              <v-list-item v-for="(item, index) in dropDownItems" :key="index">
+                <router-link :to="item.to">{{ item.name }}</router-link>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </div>
       </div>
     </v-app-bar>
@@ -93,6 +104,10 @@ export default {
           name: 'FAQ',
           to: '/faq',
         },
+      ],
+      dropDownItems: [
+        { name: 'Login', to: '/login' },
+        { name: 'Sign Up', to: '/signup' },
       ],
     }
   },
