@@ -18,7 +18,10 @@
         placeholder="Start typing to Search"
         prepend-icon="mdi-magnify"
         return-object
+        hide-details
         solo
+        rounded
+        class="px-4"
       ></v-autocomplete>
     </v-app-bar>
 
