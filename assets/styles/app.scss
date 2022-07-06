@@ -52,5 +52,9 @@ ul {
 
 a {
   text-decoration-line: none !important;
-  color: white !important;
+  color: black !important;
+}
+
+.v-btn:before {
+  background-color: inherit !important;
 }
