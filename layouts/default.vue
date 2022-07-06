@@ -1,28 +1,37 @@
 <template>
   <v-app>
-    <v-app-bar height="80" fixed elevate-on-scroll color="#e4dccf" class="d-flex align-center px-8">
-      <v-app-bar-nav-icon @click="drawer = true"> </v-app-bar-nav-icon>
-      <span class="ml-n2 mr-2 font-weight-bold">Categories</span>
+    <v-app-bar height="80" fixed elevate-on-scroll color="#e4dccf" class="px-8">
+      <div class="navbar-wrapper">
+        <div class="navbar__left">
+          <v-app-bar-nav-icon @click="drawer = true"> </v-app-bar-nav-icon>
+          <span class="ml-n2 mr-2 font-weight-bold">Categories</span>
 
-      <router-link
-        v-for="route in routes"
-        :key="route.name"
-        :to="route.to"
-        class="px-4"
-        >{{ route.name }}</router-link
-      >
-      <v-autocomplete
-        v-model="searchModel"
-        color="white"
-        label="MarketPlace!"
-        placeholder="Start typing to Search"
-        prepend-icon="mdi-magnify"
-        return-object
-        hide-details
-        solo
-        rounded
-        class="px-4"
-      ></v-autocomplete>
+          <router-link
+            v-for="route in routes"
+            :key="route.name"
+            :to="route.to"
+            class="px-4"
+            >{{ route.name }}</router-link
+          >
+          <v-autocomplete
+            v-model="searchModel"
+            color="white"
+            label="MarketPlace!"
+            placeholder="Start typing to Search"
+            prepend-icon="mdi-magnify"
+            return-object
+            hide-details
+            solo
+            rounded
+            class="px-4"
+          ></v-autocomplete>
+        </div>
+
+        <div class="navbar__right">
+          <v-btn icon elevation="0"><v-icon>mdi-cart</v-icon></v-btn>
+          <v-btn icon elevation="0"><v-icon>mdi-account</v-icon></v-btn>
+        </div>
+      </div>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary>
