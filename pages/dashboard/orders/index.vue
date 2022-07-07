@@ -3,6 +3,11 @@
     <div class="orders container">
       <h2 class="">Orders</h2>
       <div class="orders__list">
+        <div class="item-info black white--text mb-4">
+          <div>ID</div>
+          <div>Time and Date</div>
+          <div>Price</div>
+        </div>
         <Order
           v-for="item in orderItems"
           :key="item.id"
