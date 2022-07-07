@@ -1,10 +1,10 @@
 <template>
-  <div class="order" @click="navigate()">
-    <div class="order__id">
+  <div class="order-item" @click="navigate()">
+    <div>
       <h3>{{ id }}</h3>
     </div>
-    <div class="order__date">{{ date }}</div>
-    <div class="order__price">{{ price }}</div>
+    <div>{{ date }}</div>
+    <div>{{ price }}</div>
   </div>
 </template>
 
