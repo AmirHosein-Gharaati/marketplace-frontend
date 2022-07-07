@@ -22,13 +22,13 @@
       </div>
 
       <div class="product-detail__description">
-        <h2>Description</h2>
+        <h2 class="txt">Description</h2>
         <p class="px-8">{{ product.description }}</p>
         <div class="line"></div>
       </div>
 
       <div class="product-detail__specification">
-        <h2>Specification</h2>
+        <h2 class="txt">Specification</h2>
         <div
           class="px-8"
           v-for="key in Object.keys(product.specification)"
@@ -43,11 +43,25 @@
       </div>
 
       <div class="product-detail__reviews">
-        <h2>Reviews</h2>
+        <h2 class="txt">Reviews</h2>
         <div class="product-detail__reviews__list">
-          <Review :id="2"/>
-          <Review :id="3"/>
+          <Review :id="2" />
+          <Review :id="3" />
         </div>
+        <div class="line"></div>
+      </div>
+
+      <div>
+        <h2 class="txt">Similar items</h2>
+        <section>
+          <v-container>
+            <v-row>
+              <v-col v-for="n in 5" :key="n">
+                <CardItem />
+              </v-col>
+            </v-row>
+          </v-container>
+        </section>
         <div class="line"></div>
       </div>
     </div>
