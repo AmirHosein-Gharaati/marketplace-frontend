@@ -64,7 +64,7 @@
     </v-navigation-drawer>
 
     <v-main class="layout-dashboard">
-      <v-navigation-drawer right fixed app>
+      <v-navigation-drawer right fixed app permanent>
         <v-list>
           <v-list-item class="px-2 d-flex justify-center">
             <v-list-item-avatar width="120" height="120">
