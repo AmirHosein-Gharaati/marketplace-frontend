@@ -15,6 +15,11 @@
               placeholder="Last Name"
               solo
             ></v-text-field>
+            <v-text-field
+              :value="user.email"
+              placeholder="Email"
+              solo
+            ></v-text-field>
           </v-col>
 
           <v-col>
