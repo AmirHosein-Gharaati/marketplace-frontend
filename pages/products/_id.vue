@@ -7,15 +7,15 @@
         </div>
         <div class="product-detail__main__right">
           <v-container fill-height>
-            <v-col>
-              <v-row>Name: {{ product.name }}</v-row>
-              <v-row>Price: {{ product.price }}</v-row>
-              <v-row>Store: {{ product.store }}</v-row>
-              <v-row>Rating: {{ product.rating }}</v-row>
+            <v-col align-self="start">
+              <v-row class="pb-12">Name: {{ product.name }}</v-row>
+              <v-row class="pb-12">Price: {{ product.price }}</v-row>
+              <v-row class="pb-12">Store: {{ product.store }}</v-row>
+              <v-row class="pb-12">Rating: {{ product.rating }}</v-row>
             </v-col>
-            <v-col>
-              <v-row>Brand: {{ product.brand }}</v-row>
-              <v-row>Discount: {{ product.discount }}</v-row>
+            <v-col align-self="start">
+              <v-row class="pb-12">Brand: {{ product.brand }}</v-row>
+              <v-row class="pb-12">Discount: {{ product.discount }}</v-row>
             </v-col>
           </v-container>
         </div>
