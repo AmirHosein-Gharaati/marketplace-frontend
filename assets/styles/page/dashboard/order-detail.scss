@@ -4,14 +4,25 @@
   padding: $padding-xl 0;
   flex-direction: column;
 
-  &__main {
+  &__content {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    padding: $padding-md 0;
-    background-color: $color-primary;
-    border-radius: $border-radius-md;
-    width: 90%;
+    width: 100%;
     overflow-y: auto;
+
+    &__items {
+      &-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
   }
 }
