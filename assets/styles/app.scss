@@ -15,6 +15,7 @@
 @import './page/products.scss';
 @import './page/product-detail.scss';
 @import './page/dashboard/profile.scss';
+@import './page/dashboard/orders.scss';
 
 // components
 @import './component/card.scss';
@@ -23,6 +24,7 @@
 @import './component/navbar.scss';
 @import './component/review.scss';
 @import './component/filter-panel.scss';
+@import "./component/order.scss";
 
 // layouts
 @import './layout/dashbaord.scss';
