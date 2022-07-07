@@ -9,6 +9,7 @@
 @import './page/index.scss';
 @import './page/login.scss';
 @import './page/signup.scss';
+@import './page/products.scss';
 @import './page/product-detail.scss';
 
 // components
@@ -17,6 +18,7 @@
 @import './component/line.scss';
 @import './component/navbar.scss';
 @import './component/review.scss';
+@import './component/filter-panel.scss';
 
 * {
   box-sizing: border-box;
