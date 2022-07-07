@@ -50,6 +50,8 @@
             height="20"
             hide-details
             :items="sortItems"
+            item-value="id"
+            item-text="name"
             label="Select Sort"
             solo
           ></v-select>
@@ -73,8 +75,25 @@ export default {
     return {
       priceFrom: null,
       priceTo: null,
-      sortItems: ['Brand', 'Date'],
-      sortByModel: 'Brand',
+      sortByModel: 1,
+      sortItems: [
+        {
+          id: 1,
+          name: 'Lowest Price',
+        },
+        {
+          id: 2,
+          name: 'Highest Price',
+        },
+        {
+          id: 3,
+          name: 'Rating',
+        },
+        {
+          id: 4,
+          name: 'Date',
+        },
+      ],
       brands: [
         {
           id: 1,
