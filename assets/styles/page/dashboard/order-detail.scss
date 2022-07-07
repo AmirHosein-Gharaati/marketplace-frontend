@@ -1,0 +1,17 @@
+.order-detail {
+  @include mixin-dashboard;
+  justify-content: start;
+  padding: $padding-xl 0;
+  flex-direction: column;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: $padding-md 0;
+    background-color: $color-primary;
+    border-radius: $border-radius-md;
+    width: 90%;
+    overflow-y: auto;
+  }
+}

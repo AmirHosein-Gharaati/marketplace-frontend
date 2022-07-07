@@ -1,5 +1,5 @@
 <template>
-  <div class="order-item" @click="navigate()">
+  <div class="order-item item-info my-2" @click="navigate()">
     <div>
       <h3>{{ id }}</h3>
     </div>

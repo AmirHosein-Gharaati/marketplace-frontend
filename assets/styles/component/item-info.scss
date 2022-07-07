@@ -1,0 +1,9 @@
+.item-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: $padding-md 0;
+  background-color: $color-primary;
+  border-radius: $border-radius-md;
+  width: 90%;
+}
