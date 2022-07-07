@@ -1,0 +1,28 @@
+.product-detail {
+  width: 100%;
+
+  &__main {
+    display: flex;
+    width: 100%;
+
+    &__left {
+      width: 360px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border-radius: $border-radius-md;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &__right {
+      margin: 0 $padding-md;
+      background-color: white;
+      border-radius: $border-radius-md;
+      width: 100%;
+    }
+  }
+}
