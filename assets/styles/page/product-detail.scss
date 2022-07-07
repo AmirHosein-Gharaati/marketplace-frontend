@@ -25,4 +25,11 @@
       width: 100%;
     }
   }
+
+  &__description {
+    width: 100%;
+    h2 {
+      color: $color-text;
+    }
+  }
 }

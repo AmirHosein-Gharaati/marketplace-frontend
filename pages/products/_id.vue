@@ -1,7 +1,7 @@
 <template>
   <div class="container px-16">
     <div class="product-detail">
-      <div class="product-detail__main">
+      <div class="product-detail__main pb-8">
         <div class="product-detail__main__left">
           <img :src="product.image" :alt="product.name" />
         </div>
@@ -20,7 +20,14 @@
           </v-container>
         </div>
       </div>
+
+      <div class="product-detail__description">
+        <h2>Description</h2>
+        <p>{{ product.description }}</p>
+      </div>
     </div>
+
+    <div class="line"></div>
   </div>
 </template>
 
