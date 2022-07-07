@@ -68,18 +68,16 @@
         <v-list>
           <v-list-item class="px-2 d-flex justify-center">
             <v-list-item-avatar width="120" height="120">
-              <v-img
-                src="https://randomuser.me/api/portraits/women/85.jpg"
-              ></v-img>
+              <v-img :src="user.avatarUrl"></v-img>
             </v-list-item-avatar>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="text-h6">
-                Sandra Adams
+                {{ user.firstName + ' ' + user.lastName }}
               </v-list-item-title>
-              <v-list-item-subtitle>sandra_a88@gmail.com</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -181,6 +179,11 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    user() {
+      return this.$store.getters['user/getUser']
+    },
   },
 }
 </script>
