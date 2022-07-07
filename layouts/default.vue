@@ -97,6 +97,10 @@ export default {
       searchModel: null,
       routes: [
         {
+          name: 'Home',
+          to: '/',
+        },
+        {
           name: 'Products',
           to: '/products',
         },
