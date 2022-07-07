@@ -1,6 +1,12 @@
 export const state = () => ({
   user: {
-    name: 'Amir'
+    id: 1,
+    firstName: 'Amirhosein',
+    lastName: 'Gharaati',
+    phoneNumber: '09365721324',
+    avatarUrl: 'https://randomuser.me/api/portraits/women/85.jpg',
+    nationalId: '2283169240',
+    permissionName: 'normal',
   },
 })
 
