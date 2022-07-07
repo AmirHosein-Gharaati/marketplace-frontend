@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 // mixins
-@import "./mixin/dashboard-background.scss";
+@import './mixin/dashboard-background.scss';
 
 // utility
 @import './utility/button.scss';
@@ -24,7 +24,7 @@
 @import './component/navbar.scss';
 @import './component/review.scss';
 @import './component/filter-panel.scss';
-@import "./component/order.scss";
+@import './component/order-item.scss';
 
 // layouts
 @import './layout/dashbaord.scss';
