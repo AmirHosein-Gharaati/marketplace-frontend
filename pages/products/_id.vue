@@ -62,7 +62,6 @@
             </v-row>
           </v-container>
         </section>
-        <div class="line"></div>
       </div>
     </div>
   </div>
