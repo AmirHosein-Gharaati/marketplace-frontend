@@ -4,7 +4,7 @@
       height="80"
       fixed
       elevate-on-scroll
-      color="#e4dccf"
+      color="primary"
       class="px-8"
       app
     >
