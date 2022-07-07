@@ -40,8 +40,21 @@
       </div>
     </div>
 
-    <div class="container products__main">
-      <h2 class="px-12 txt">Best matches</h2>
+    <div class="container">
+      <div class="products__top">
+        <h2 class="d-flex txt">Best matches</h2>
+        <div class="products__top__sort">
+          <h3 class="txt px-4">Sort By</h3>
+          <v-select
+            v-model="sortByModel"
+            height="20"
+            hide-details
+            :items="sortItems"
+            label="Select Sort"
+            solo
+          ></v-select>
+        </div>
+      </div>
       <v-container>
         <v-row class="py-2" v-for="rowCount in 5" :key="rowCount">
           <v-col v-for="colCount in 5" :key="colCount">
@@ -60,6 +73,8 @@ export default {
     return {
       priceFrom: null,
       priceTo: null,
+      sortItems: ['Brand', 'Date'],
+      sortByModel: 'Brand',
       brands: [
         {
           id: 1,

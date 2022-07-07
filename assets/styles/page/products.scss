@@ -1,6 +1,19 @@
 .products {
   display: flex;
 
-  &__main {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 $padding-xl;
+
+    &__sort {
+      display: flex;
+      align-items: center;
+      padding: 0 $padding-xl;
+
+      .v-input__control {
+        max-width: 180px;
+      }
+    }
   }
 }
