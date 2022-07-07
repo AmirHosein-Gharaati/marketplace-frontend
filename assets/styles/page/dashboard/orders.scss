@@ -1,5 +1,6 @@
 .orders {
   @include mixin-dashboard;
+  flex-direction: column;
 
   &__list {
     width: 100%;

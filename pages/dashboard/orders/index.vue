@@ -1,6 +1,7 @@
 <template>
   <div class="container px-16">
     <div class="orders container">
+      <h2 class="">Orders</h2>
       <div class="orders__list">
         <Order
           v-for="item in orderItems"
