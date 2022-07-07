@@ -1,0 +1,24 @@
+.review {
+  display: flex;
+  flex-direction: column;
+
+  &__info {
+    color: black;
+  }
+
+  &__description {
+    color: rgb(41, 32, 32);
+  }
+
+  &__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+  }
+
+  &__end {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -41,13 +41,26 @@
         </div>
         <div class="line"></div>
       </div>
+
+      <div class="product-detail__reviews">
+        <h2>Reviews</h2>
+        <div class="product-detail__reviews__list">
+          <Review :id="2"/>
+          <Review :id="3"/>
+        </div>
+        <div class="line"></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Review from '@/components/Review.vue'
 export default {
   name: 'ProductId',
+  components: {
+    Review,
+  },
   asyncData({ params, redirect }) {
     return {
       id: params.id,

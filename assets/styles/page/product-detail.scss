@@ -27,13 +27,18 @@
   }
 
   &__description,
-  &__specification {
+  &__specification,
+  &__reviews {
     width: 100%;
-    h2 {
+    > h2 {
       color: $color-text;
     }
   }
 
-  &__specification {
+  &__reviews {
+    &__list {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
