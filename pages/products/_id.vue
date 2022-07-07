@@ -24,8 +24,8 @@
       <div class="product-detail__description">
         <h2>Description</h2>
         <p class="px-8">{{ product.description }}</p>
+        <div class="line"></div>
       </div>
-      <div class="line"></div>
 
       <div class="product-detail__specification">
         <h2>Specification</h2>
@@ -39,8 +39,8 @@
             <v-col cols="1">{{ product.specification[key] }}</v-col>
           </v-row>
         </div>
+        <div class="line"></div>
       </div>
-      <div class="line"></div>
     </div>
   </div>
 </template>
