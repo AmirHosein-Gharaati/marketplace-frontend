@@ -52,7 +52,7 @@
       </div>
 
       <div>
-        <h2 class="txt">Similar items</h2>
+        <h2 class="txt pb-4">Similar items</h2>
         <section>
           <v-container>
             <v-row>
