@@ -5,7 +5,7 @@ export const state = () => ({
     lastName: 'Gharaati',
     email: "amirgh1380@gmail.com",
     phoneNumber: '09365721324',
-    avatarUrl: 'https://randomuser.me/api/portraits/women/85.jpg',
+    avatarUrl: 'https://raw.githubusercontent.com/AmirHosein-Gharaati/portfolio/master/src/assets/images/me.png',
     nationalId: '2283169240',
     permissionName: 'normal',
   },
