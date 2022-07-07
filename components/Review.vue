@@ -1,5 +1,5 @@
 <template>
-  <div class="review px-8 py-4">
+  <div class="review px-8">
     <div class="review__info">
       <span>{{ review.name }}</span> ● <span>{{ review.date }}</span> ●
       <span>{{ review.rating }}/5.0</span>
