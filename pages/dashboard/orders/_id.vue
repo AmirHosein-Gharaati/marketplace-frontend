@@ -24,7 +24,7 @@
             <div class="item-info black white--text mb-4">
               <div>ID</div>
               <div>Count</div>
-              <div>Price</div>
+              <div>Price (Rials)</div>
               <div>Discount</div>
             </div>
             <div
@@ -37,7 +37,23 @@
               <div>{{ item.price }}</div>
               <div>{{ item.discount }}</div>
             </div>
+            <p class="order-detail__content__price px-16 pt-8">
+              <span class="font-weight-bold">Total Price: </span
+              >{{ order.totalPrice }} Rials
+            </p>
           </div>
+        </div>
+        <v-container class="py-2 px-16">
+          <div class="line"></div>
+        </v-container>
+        <div class="order-detail__content__shipping px-16">
+          <p>
+            <span class="font-weight-bold">Shipping Method: </span
+            >{{ order.shippingMethod }}
+          </p>
+          <p class="pl-16">
+            <span class="font-weight-bold">Address: </span>{{ order.address }}
+          </p>
         </div>
       </div>
     </div>
@@ -60,38 +76,38 @@ export default {
         date: '2018 Jan 13',
         status: 'Available',
         storeName: 'PC Center',
-        totalPrice: '289010 Rials',
+        totalPrice: '289010',
         shippingMethod: 'Normal',
         address: 'Shiraz, Fars, Iran',
         items: [
           {
             id: 1,
             count: 5,
-            price: '789020 Rials',
+            price: '789020',
             discount: 0,
           },
           {
             id: 2,
             count: 5,
-            price: '789020 Rials',
+            price: '789020',
             discount: 0,
           },
           {
             id: 3,
             count: 5,
-            price: '789020 Rials',
+            price: '789020',
             discount: 0,
           },
           {
             id: 4,
             count: 5,
-            price: '789020 Rials',
+            price: '789020',
             discount: 0,
           },
           {
             id: 5,
             count: 5,
-            price: '789020 Rials',
+            price: '789020',
             discount: 0,
           },
         ],
