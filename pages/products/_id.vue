@@ -29,8 +29,15 @@
 
       <div class="product-detail__specification">
         <h2>Specification</h2>
-        <div class="px-8" v-for="key in Object.keys(product.specification)" :key="key">
-          {{ key }}: {{ product.specification[key] }}
+        <div
+          class="px-8"
+          v-for="key in Object.keys(product.specification)"
+          :key="key"
+        >
+          <v-row>
+            <v-col cols="1">{{ key }}</v-col>
+            <v-col cols="1">{{ product.specification[key] }}</v-col>
+          </v-row>
         </div>
       </div>
       <div class="line"></div>
