@@ -87,18 +87,16 @@
         <v-divider></v-divider>
 
         <v-list nav dense>
-          <v-list-item link>
+          <v-list-item
+            v-for="route in userDrawerRoutes"
+            :key="route.to"
+            link
+            :to="route.to"
+          >
             <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
+              <v-icon>{{ route.icon }}</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Profile</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon>mdi-cash</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Orders</v-list-item-title>
+            <v-list-item-title>{{ route.name }}</v-list-item-title>
           </v-list-item>
 
           <v-expansion-panels flat accordion hover>
@@ -110,17 +108,13 @@
                 </div>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-list-item link>
-                  <v-list-item-title>Add New Store</v-list-item-title>
-                </v-list-item>
-                <v-list-item link>
-                  <v-list-item-title>Edit Store</v-list-item-title>
-                </v-list-item>
-                <v-list-item link>
-                  <v-list-item-title>Add New Product</v-list-item-title>
-                </v-list-item>
-                <v-list-item link>
-                  <v-list-item-title>Edit Product</v-list-item-title>
+                <v-list-item
+                  v-for="route in storeRoutes"
+                  :key="route.to"
+                  link
+                  :to="route.to"
+                >
+                  <v-list-item-title>{{ route.name }}</v-list-item-title>
                 </v-list-item>
               </v-expansion-panel-content>
             </v-expansion-panel>
@@ -156,9 +150,35 @@ export default {
           to: '/faq',
         },
       ],
-      dropDownItems: [
-        { name: 'Login', to: '/login' },
-        { name: 'Sign Up', to: '/signup' },
+      userDrawerRoutes: [
+        {
+          name: 'Profile',
+          to: '/dashboard/profile',
+          icon: 'mdi-account',
+        },
+        {
+          name: 'Orders',
+          to: '/dashboard/orders',
+          icon: 'mdi-cash',
+        },
+      ],
+      storeRoutes: [
+        {
+          name: 'Add New Store',
+          to: '/dashboard/store/add-new-store',
+        },
+        {
+          name: 'Edit Store',
+          to: '/dashboard/store/edit-store',
+        },
+        {
+          name: 'Add New Product',
+          to: '/dashboard/store/add-new-product',
+        },
+        {
+          name: 'Edit Product',
+          to: '/dashboard/store/edit-store',
+        },
       ],
     }
   },
