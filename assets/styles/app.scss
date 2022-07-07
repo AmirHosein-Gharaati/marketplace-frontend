@@ -1,5 +1,8 @@
 @import './variables.scss';
 
+// mixins
+@import "./mixin/dashboard-background.scss";
+
 // utility
 @import './utility/button.scss';
 @import './utility/container.scss';
