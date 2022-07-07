@@ -26,10 +26,14 @@
     }
   }
 
-  &__description {
+  &__description,
+  &__specification {
     width: 100%;
     h2 {
       color: $color-text;
     }
+  }
+
+  &__specification {
   }
 }
