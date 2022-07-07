@@ -39,8 +39,9 @@
           <v-menu offset-y transition="slide-y-transition" bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-btn icon elevation="0" v-bind="attrs" v-on="on"
-                ><v-icon>mdi-account</v-icon></v-btn
-              >
+                ><v-icon>mdi-account</v-icon>
+                <v-icon>mdi-chevron-down</v-icon>
+              </v-btn>
             </template>
             <v-list>
               <v-list-item v-for="(item, index) in dropDownItems" :key="index">
