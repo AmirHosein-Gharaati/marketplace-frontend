@@ -37,6 +37,11 @@
               :items-per-page="5"
             ></v-data-table>
           </v-card>
+
+          <p class="pt-8">
+            <span class="font-weight-bold">Total Price: </span
+            >{{ order.totalPrice }} Rials
+          </p>
         </div>
         <v-container class="py-2 px-16">
           <div class="line"></div>
