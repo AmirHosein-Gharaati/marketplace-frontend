@@ -68,7 +68,7 @@
         <v-list>
           <v-list-item class="px-2 d-flex justify-center">
             <v-list-item-avatar width="120" height="120">
-              <v-img :src="user.avatarUrl"></v-img>
+              <nuxt-img :src="user.avatarUrl" />
             </v-list-item-avatar>
           </v-list-item>
 
