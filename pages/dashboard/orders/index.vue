@@ -1,20 +1,34 @@
 <template>
   <div class="container px-16">
     <div class="orders container">
-      <h2 class="">Orders</h2>
       <div class="orders__list">
-        <div class="item-info black white--text mb-4">
-          <div>ID</div>
-          <div>Time and Date</div>
-          <div>Price</div>
-        </div>
-        <Order
+        <v-card>
+          <v-card-title>
+            Orders
+            <v-spacer></v-spacer>
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
+          </v-card-title>
+          <v-data-table
+            :headers="headers"
+            :items="orderItems"
+            :items-per-page="7"
+            :search="search"
+            @click:row="navigate"
+          ></v-data-table>
+        </v-card>
+        <!-- <Order
           v-for="item in orderItems"
           :key="item.id"
           :id="item.id"
           :date="item.date"
           :price="item.price"
-        />
+        /> -->
       </div>
     </div>
   </div>
@@ -30,6 +44,16 @@ export default {
   },
   data() {
     return {
+      search: null,
+      headers: [
+        {
+          text: 'ID',
+          align: 'start',
+          value: 'id',
+        },
+        { text: 'Date', value: 'date' },
+        { text: 'Price (Rials)', value: 'price' },
+      ],
       orderItems: [
         {
           id: 1,
@@ -68,6 +92,12 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    navigate(value) {
+      const { id } = value
+      this.$router.push(`/dashboard/orders/${id}`)
+    },
   },
 }
 </script>

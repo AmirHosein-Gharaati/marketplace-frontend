@@ -2,6 +2,17 @@
   @include mixin-dashboard;
   flex-direction: column;
 
+  .v-data-table,
+  .v-card {
+    width: 95% !important;
+  }
+
+  .v-data-table {
+    tr {
+      cursor: pointer;
+    }
+  }
+
   &__list {
     width: 100%;
     height: 100%;
