@@ -1,6 +1,6 @@
 .order-detail {
   @include mixin-dashboard;
-  justify-content: start;
+  justify-content: flex-start;
   padding: $padding-xl 0;
   flex-direction: column;
 
