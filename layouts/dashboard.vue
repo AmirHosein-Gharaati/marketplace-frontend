@@ -163,19 +163,19 @@ export default {
       storeRoutes: [
         {
           name: 'Add New Store',
-          to: '/dashboard/store/add-new-store',
+          to: '/dashboard/store/add',
         },
         {
           name: 'Edit Store',
-          to: '/dashboard/store/edit-store',
+          to: '/dashboard/store/edit',
         },
         {
           name: 'Add New Product',
-          to: '/dashboard/store/add-new-product',
+          to: '/dashboard/product/add',
         },
         {
           name: 'Edit Product',
-          to: '/dashboard/store/edit-store',
+          to: '/dashboard/product/edit',
         },
       ],
     }
