@@ -37,29 +37,6 @@
               :items-per-page="5"
             ></v-data-table>
           </v-card>
-          <!-- <h3 class="pb-4">Items</h3>
-          <div class="order-detail__content__items">
-            <div class="item-info black white--text mb-4">
-              <div>ID</div>
-              <div>Count</div>
-              <div>Price (Rials)</div>
-              <div>Discount</div>
-            </div>
-            <div
-              v-for="item in order.items"
-              :key="item.id"
-              class="item-info my-2"
-            >
-              <div>{{ item.id }}</div>
-              <div>{{ item.count }}</div>
-              <div>{{ item.price }}</div>
-              <div>{{ item.discount }}</div>
-            </div>
-            <p class="order-detail__content__price px-16 pt-8">
-              <span class="font-weight-bold">Total Price: </span
-              >{{ order.totalPrice }} Rials
-            </p>
-          </div> -->
         </div>
         <v-container class="py-2 px-16">
           <div class="line"></div>
