@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(this.emailModel, this.passwordModel)
+      this.$router.push('/dashboard/profile')
     },
   },
 }
