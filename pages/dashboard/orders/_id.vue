@@ -19,7 +19,25 @@
           <div class="line"></div>
         </v-container>
         <div class="order-detail__content__items-wrapper">
-          <h3 class="pb-4">Items</h3>
+          <v-card>
+            <v-card-title>
+              Items
+              <v-spacer></v-spacer>
+              <v-text-field
+                v-model="search"
+                append-icon="mdi-magnify"
+                label="Search"
+                single-line
+                hide-details
+              ></v-text-field>
+            </v-card-title>
+            <v-data-table
+              :headers="itemHeaders"
+              :items="order.items"
+              :items-per-page="5"
+            ></v-data-table>
+          </v-card>
+          <!-- <h3 class="pb-4">Items</h3>
           <div class="order-detail__content__items">
             <div class="item-info black white--text mb-4">
               <div>ID</div>
@@ -41,7 +59,7 @@
               <span class="font-weight-bold">Total Price: </span
               >{{ order.totalPrice }} Rials
             </p>
-          </div>
+          </div> -->
         </div>
         <v-container class="py-2 px-16">
           <div class="line"></div>
@@ -71,6 +89,12 @@ export default {
   },
   data() {
     return {
+      itemHeaders: [
+        { text: 'ID', value: 'id' },
+        { text: 'Count', value: 'count' },
+        { text: 'Price', value: 'price' },
+        { text: 'Discount', value: 'discount' },
+      ],
       order: {
         id: 1,
         date: '2018 Jan 13',

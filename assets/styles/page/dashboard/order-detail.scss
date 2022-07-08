@@ -13,6 +13,17 @@
 
     &__items {
       &-wrapper {
+        .v-data-table,
+        .v-card {
+          width: 90% !important;
+        }
+
+        .v-data-table {
+          tr {
+            cursor: pointer;
+          }
+        }
+
         width: 100%;
         display: flex;
         flex-direction: column;
