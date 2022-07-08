@@ -35,7 +35,9 @@
         </div>
 
         <div class="navbar__right">
-          <v-btn icon elevation="0" to="/dashboard/cart"><v-icon>mdi-cart</v-icon></v-btn>
+          <v-btn icon elevation="0" to="/dashboard/cart"
+            ><v-icon>mdi-cart</v-icon></v-btn
+          >
         </div>
       </div>
     </v-app-bar>
