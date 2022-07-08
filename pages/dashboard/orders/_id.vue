@@ -35,6 +35,7 @@
               :headers="itemHeaders"
               :items="order.items"
               :items-per-page="5"
+              :search="search"
             ></v-data-table>
           </v-card>
 
