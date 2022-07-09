@@ -52,7 +52,7 @@
             <span class="font-weight-bold">Shipping Method: </span
             >{{ order.shippingMethod }}
           </p>
-          <p class="pl-16">
+          <p>
             <span class="font-weight-bold">Address: </span>{{ order.address }}
           </p>
         </div>
