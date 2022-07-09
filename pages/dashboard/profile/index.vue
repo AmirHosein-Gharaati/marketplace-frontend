@@ -52,6 +52,7 @@
           </v-col>
         </v-row>
         <v-row justify="center">
+          <v-btn to="/dashboard/profile/addresses">Adresses</v-btn>
           <!-- <v-btn @click="setUser()">Edit</v-btn> -->
         </v-row>
       </v-container>

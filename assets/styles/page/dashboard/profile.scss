@@ -1,3 +1,5 @@
 .profile {
   @include mixin-dashboard;
+
+  overflow-y: auto;
 }
