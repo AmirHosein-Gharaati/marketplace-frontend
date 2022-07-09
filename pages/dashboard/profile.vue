@@ -4,21 +4,29 @@
       <v-container>
         <v-row>
           <v-col>
-            <v-text-field :value="user.id" placeholder="ID" solo></v-text-field>
+            <v-text-field
+              :value="user.id"
+              placeholder="ID"
+              label="ID"
+              outlined
+            ></v-text-field>
             <v-text-field
               :value="user.firstName"
+              label="First Name"
               placeholder="First Name"
-              solo
+              outlined
             ></v-text-field>
             <v-text-field
               :value="user.lastName"
               placeholder="Last Name"
-              solo
+              label="Last Name"
+              outlined
             ></v-text-field>
             <v-text-field
               :value="user.email"
               placeholder="Email"
-              solo
+              label="Email"
+              outlined
             ></v-text-field>
           </v-col>
 
@@ -26,17 +34,20 @@
             <v-text-field
               :value="user.phoneNumber"
               placeholder="Phone Number"
-              solo
+              label="Phone Number"
+              outlined
             ></v-text-field>
             <v-text-field
               :value="user.nationalId"
               placeholder="National ID"
-              solo
+              label="National ID"
+              outlined
             ></v-text-field>
             <v-text-field
               :value="user.permissionName"
               placeholder="Permission"
-              solo
+              label="Permission"
+              outlined
             ></v-text-field>
           </v-col>
         </v-row>
