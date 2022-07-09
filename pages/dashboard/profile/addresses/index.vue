@@ -21,6 +21,8 @@
           @click:row="navigate"
         ></v-data-table>
       </v-card>
+      <div class="py-4"></div>
+      <v-btn to="/dashboard/profile/addresses/new">Add New Address</v-btn>
     </div>
   </div>
 </template>

@@ -1,5 +1,6 @@
 .addresses {
   @include mixin-dashboard;
+  flex-direction: column;
 
   .v-data-table,
   .v-card {
