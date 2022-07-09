@@ -35,6 +35,49 @@
         </div>
 
         <div class="navbar__right">
+          <!-- Notification Dialog -->
+          <v-dialog v-model="dialog" width="500">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                icon
+                elevation="0"
+                v-bind="attrs"
+                v-on="on"
+                @click="onNotificationButtonPressed()"
+                ><v-badge
+                  color="red"
+                  :content="haveMessage"
+                  :value="haveMessage"
+                  dot
+                  overlap
+                >
+                  <v-icon> mdi-bell </v-icon>
+                </v-badge></v-btn
+              >
+            </template>
+            <v-card>
+              <v-card-title class="text-h5 grey lighten-2">
+                Notifications
+              </v-card-title>
+
+              <v-card-text>
+                <v-list>
+                  <v-list-item
+                    v-for="notification in notifications"
+                    :key="notification.id"
+                    >{{ notification.text }}</v-list-item
+                  >
+                </v-list>
+              </v-card-text>
+
+              <v-divider></v-divider>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn text @click="dialog = false"> Close </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
           <v-btn icon elevation="0" to="/dashboard/cart"
             ><v-icon>mdi-cart</v-icon></v-btn
           >
@@ -131,6 +174,8 @@ export default {
   name: 'DashboardLayout',
   data() {
     return {
+      dialog: false,
+      notificationButtonPressed: false,
       fixed: false,
       title: 'Marketplace',
       drawer: false,
@@ -180,11 +225,30 @@ export default {
           to: '/dashboard/product/edit',
         },
       ],
+      notifications: [
+        {
+          id: 1,
+          text: 'This is first notification',
+        },
+        {
+          id: 2,
+          text: 'This is second notification',
+        },
+      ],
     }
   },
   computed: {
     user() {
       return this.$store.getters['user/getUser']
+    },
+    haveMessage() {
+      return this.notifications.length > 0 && !this.notificationButtonPressed
+    },
+  },
+  methods: {
+    onNotificationButtonPressed() {
+      this.dialog = true
+      this.notificationButtonPressed = true
     },
   },
 }
