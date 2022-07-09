@@ -14,26 +14,26 @@
                     name="store name"
                     label="Store Name"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="numbers"
                     label="Numbers"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="brand"
                     label="Brand"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     prepend-inner-icon="mdi-attachment"
                     name="image"
                     label="Image"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                 </v-col>
                 <v-col>
@@ -41,30 +41,30 @@
                     name="product name"
                     label="Product Name"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="price"
                     label="Price"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="category"
                     label="Category"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="specification"
                     label="Specification"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
-                <v-textarea solo placeholder="Description"></v-textarea>
+                <v-textarea outlined placeholder="Description"></v-textarea>
               </v-row>
             </v-container>
           </v-form>

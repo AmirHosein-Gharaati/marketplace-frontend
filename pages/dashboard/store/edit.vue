@@ -14,25 +14,25 @@
                     name="new name"
                     label="New Name"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="country"
                     label="Country"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="city"
                     label="City"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="postal code"
                     label="Postal code"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                 </v-col>
                 <v-col>
@@ -40,31 +40,31 @@
                     name="owner"
                     label="Owner"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="province"
                     label="Province"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     name="street"
                     label="Street"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                   <v-text-field
                     prepend-inner-icon="mdi-attachment"
                     name="avatar"
                     label="avatar"
                     type="text"
-                    solo
+                    outlined
                   ></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
-                <v-textarea solo placeholder="Description"></v-textarea>
+                <v-textarea outlined placeholder="Description"></v-textarea>
               </v-row>
             </v-container>
           </v-form>
