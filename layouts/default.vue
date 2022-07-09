@@ -35,7 +35,6 @@
         </div>
 
         <div class="navbar__right">
-          <v-btn icon elevation="0"><v-icon>mdi-cart</v-icon></v-btn>
           <v-menu offset-y transition="slide-y-transition" bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-btn icon elevation="0" v-bind="attrs" v-on="on"
