@@ -4,5 +4,7 @@ export default function ({ store, redirect, route, error }) {
 
   if (path.startsWith('/dashboard') && !isAuthenticated) {
     error('error')
+  } else if (['/login', '/signup'].includes(path) && isAuthenticated) {
+    redirect('/dashboard/profile')
   }
 }
