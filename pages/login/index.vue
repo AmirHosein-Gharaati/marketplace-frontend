@@ -9,7 +9,7 @@
                 <v-toolbar-title>Login form</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <v-form @submit.prevent="submit">
                   <v-text-field
                     v-model="emailModel"
                     prepend-icon="mdi-email"
@@ -29,7 +29,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn @click="onSubmit()">Login</v-btn>
+                <v-btn type="submit" @click="onSubmit()">Login</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
