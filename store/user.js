@@ -13,8 +13,12 @@ export const state = () => ({
 })
 
 export const actions = {
-  counterUp({ commit }, newUser) {
-    commit('setUser', newUser)
+  async testRepo() {
+    const data = {
+      email: 'amirgh1380@gmail.com',
+      password: 'password',
+    }
+    return await this.$repositories.user.getUser(data)
   },
 }
 export const mutations = {

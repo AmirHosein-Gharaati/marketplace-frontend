@@ -1,7 +1,12 @@
-const resource = '/users'
+const resource = '/auth/token'
+
 export default ($axios) => ({
   all() {
     return $axios.get(`${resource}`)
+  },
+
+  getUser(data) {
+    return $axios.post(`${resource}`, data)
   },
 
   get(id) {
