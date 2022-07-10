@@ -3,6 +3,7 @@ const userTokenName = 'marketplace_userTokenName'
 export const state = () => ({
   auth: {
     token: '',
+    isAuthenticated: false,
   },
 })
 
@@ -22,18 +23,31 @@ export const actions = {
     }
   },
 
+  checkUserCookie({ commit }) {
+    if (this.$cookies.get(userTokenName)) {
+      commit('setIsAuthenticated', true)
+    }
+  },
+
   setUserToken({ commit }, token) {
     this.$cookies.set(userTokenName, token, {
       maxAge: 60 * 60 * 24 * 7,
     })
-    commit('setUserTokenName')
+    commit('setToken', this.$cookies.get(userTokenName))
   },
 }
 
 export const mutations = {
-  setUserTokenName(state) {
-    state.auth.token = this.$cookies.get(userTokenName)
+  setToken(state, newToken) {
+    state.auth.token = newToken
+    state.auth.isAuthenticated = true
+  },
+  setIsAuthenticated(state, value) {
+    state.auth.isAuthenticated = value
   },
 }
 
-export const getters = {}
+export const getters = {
+  getToken: (state) => state.auth.token,
+  getIsAuthenticated: (state) => state.auth.isAuthenticated,
+}

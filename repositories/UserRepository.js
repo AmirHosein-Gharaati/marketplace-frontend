@@ -1,27 +1,13 @@
-const resource = '/auth/token'
+const resource = '/users'
 
 export default ($axios) => ({
-  all() {
-    return $axios.get(`${resource}`)
-  },
+  getUser(token) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
 
-  getUser(data) {
-    return $axios.post(`${resource}`, data)
-  },
-
-  get(id) {
-    return $axios.get(`${resource}/${id}`)
-  },
-
-  create(payload) {
-    return $axios.post(`${resource}`, payload)
-  },
-
-  update(id, payload) {
-    return $axios.post(`${resource}/${id}`, payload)
-  },
-
-  delete(id) {
-    return $axios.delete(`${resource}/${id}`)
+    return $axios.post(`${resource}/me`, {}, config)
   },
 })
