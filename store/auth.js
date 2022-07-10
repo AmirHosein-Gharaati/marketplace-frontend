@@ -42,7 +42,7 @@ export const actions = {
     this.$cookies.set(userTokenName, token, {
       maxAge: 60 * 60 * 24 * 7,
     })
-    commit('setToken', { token: '', isAuthenticated: true })
+    commit('setToken', { token: token, isAuthenticated: true })
   },
 }
 

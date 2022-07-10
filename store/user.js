@@ -16,8 +16,7 @@ export const actions = {
   async getUserData({ commit, rootGetters }) {
     try {
       const token = rootGetters['auth/getToken']
-      if (!token) return
-      
+      console.log('token', token)
       const { data } = await this.$repositories.user.get(token)
       commit('setUser', data.user)
     } catch (error) {
