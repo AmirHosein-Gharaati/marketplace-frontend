@@ -48,7 +48,8 @@
               </v-list-item>
             </v-list>
             <v-list v-else>
-              <v-list-item>
+              <v-list-item class="d-flex flex-column">
+                <v-btn class="mb-2" to="/dashboard/profile">Profile</v-btn>
                 <v-btn @click="logout">Logout</v-btn>
               </v-list-item>
             </v-list>
