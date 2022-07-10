@@ -71,6 +71,13 @@
 <script>
 export default {
   name: 'Products',
+  asyncData({ params }) {
+    if (params.category) {
+      return {
+        category: params.category,
+      }
+    }
+  },
   data() {
     return {
       priceFrom: null,
