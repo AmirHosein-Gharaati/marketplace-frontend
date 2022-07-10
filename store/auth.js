@@ -8,13 +8,30 @@ export const state = () => ({
 })
 
 export const actions = {
-  async login({ dispatch, getters }, payload) {
+  async login({ dispatch }, payload) {
     try {
       const res = await this.$repositories.auth.login(payload)
       const { data: token } = res.data
 
       if (this.$cookies.get(userTokenName) !== token) {
         dispatch('setUserToken', token)
+      }
+
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async signUp({ dispatch }, payload) {
+    try {
+      const res = await this.$repositories.auth.signUp(payload)
+      console.log('hello');
+      if (res.data.status == 'ok') {
+        dispatch('login', {
+          email: payload.email,
+          password: payload.password,
+        })
       }
 
       return res.data

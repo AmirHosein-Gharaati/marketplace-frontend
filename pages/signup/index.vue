@@ -81,8 +81,22 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
-      console.log('Submit')
+    async onSubmit() {
+      const payload = {
+        first_name: this.firstNameModel,
+        last_name: this.lastNameModel,
+        phone_number: this.phoneNumberModel,
+        email: this.emailModel,
+        password: this.passwordModel,
+      }
+      
+      const data = await this.$store.dispatch('auth/signUp', payload)
+
+      if (data.status == 'ok') {
+        this.$router.push('/dashboard/profile')
+      } else {
+        alert(data.message)
+      }
     },
     validation(v) {
       if (v === this.passwordModel) {
