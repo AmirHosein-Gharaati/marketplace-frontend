@@ -53,6 +53,13 @@ export default {
 
   router: {
     middleware: 'route-guard',
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'ProductsByCategory',
+        path: '/products/',
+        component: resolve(__dirname, 'pages/products/_category/index.vue'),
+      })
+    },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

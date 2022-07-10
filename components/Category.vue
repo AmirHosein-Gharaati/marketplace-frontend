@@ -20,7 +20,7 @@
       </v-expansion-panel>
     </v-expansion-panels>
 
-    <v-list-item v-else link>
+    <v-list-item @click="navigate" v-else link>
       <v-list-item-title>{{ category.name }}</v-list-item-title>
     </v-list-item>
   </div>
@@ -44,6 +44,9 @@ export default {
           this.items.push(sub)
         }
       }
+    },
+    navigate() {
+      this.$router.push(`/products/${this.category.name}`)
     },
   },
   data() {
