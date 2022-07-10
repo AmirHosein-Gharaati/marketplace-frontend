@@ -1,13 +1,13 @@
 const resource = '/users'
 
 export default ($axios) => ({
-  getUser(token) {
+  get(token) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     }
 
-    return $axios.post(`${resource}/me`, {}, config)
+    return $axios.get(`${resource}/me`, config)
   },
 })

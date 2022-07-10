@@ -113,14 +113,14 @@
         <v-list>
           <v-list-item class="px-2 d-flex justify-center">
             <v-list-item-avatar width="120" height="120">
-              <nuxt-img :src="user.avatarUrl" />
+              <nuxt-img :src="user.avatar_url" />
             </v-list-item-avatar>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-content>
               <v-list-item-title class="text-h6">
-                {{ user.firstName + ' ' + user.lastName }}
+                {{ user.first_name + ' ' + user.last_name }}
               </v-list-item-title>
               <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
             </v-list-item-content>

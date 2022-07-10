@@ -2,30 +2,32 @@ export const state = () => ({
   user: {
     id: 0,
     email: '',
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    avatarUrl:
-      'https://raw.githubusercontent.com/AmirHosein-Gharaati/portfolio/master/src/assets/images/me.png',
-    nationalId: '',
-    permissionName: '',
-    created_at: '',
+    first_name: '',
+    last_name: '',
+    phone_number: '',
+    avatar_url: '/profile.jpg',
+    national_id: '',
+    permission_name: '',
+    createdAt: '',
   },
 })
 
 export const actions = {
-  async getUser({ commit }, token) {
+  async getUserData({ commit, rootGetters }) {
     try {
-      const { data } = await this.$repositories.user.getUser(token)
-      commit('setUser', data)
+      const token = rootGetters['auth/getToken']
+      const { data } = await this.$repositories.user.get(token)
+      commit('setUser', data.user)
     } catch (error) {
       console.log(error)
     }
   },
 }
+
 export const mutations = {
   setUser(state, newUser) {
     state.user = newUser
+    state.user.avatar_url = '/profile.jpg'
   },
 }
 export const getters = {

@@ -11,13 +11,13 @@
               outlined
             ></v-text-field>
             <v-text-field
-              :value="user.firstName"
+              :value="user.first_name"
               label="First Name"
               placeholder="First Name"
               outlined
             ></v-text-field>
             <v-text-field
-              :value="user.lastName"
+              :value="user.last_name"
               placeholder="Last Name"
               label="Last Name"
               outlined
@@ -32,19 +32,19 @@
 
           <v-col>
             <v-text-field
-              :value="user.phoneNumber"
+              :value="user.phone_number"
               placeholder="Phone Number"
               label="Phone Number"
               outlined
             ></v-text-field>
             <v-text-field
-              :value="user.nationalId"
+              :value="user.national_id"
               placeholder="National ID"
               label="National ID"
               outlined
             ></v-text-field>
             <v-text-field
-              :value="user.permissionName"
+              :value="user.permission_name"
               placeholder="Permission"
               label="Permission"
               outlined
@@ -64,6 +64,9 @@
 export default {
   name: 'Dashboard',
   layout: 'dashboard',
+  mounted() {
+    this.$store.dispatch('user/getUserData')
+  },
   methods: {
     setUser() {
       console.log('This is setUser Button')

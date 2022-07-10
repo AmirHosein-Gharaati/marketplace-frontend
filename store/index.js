@@ -6,7 +6,8 @@ export const actions = {
   async clientInit({ dispatch, getters }) {
     await dispatch('auth/checkUserCookie')
     if (getters['auth/getIsAuthenticated']) {
-      dispatch('user/getUser')
+      const token = getters['auth/getToken']
+      dispatch('user/getUserData')
     }
   },
 }

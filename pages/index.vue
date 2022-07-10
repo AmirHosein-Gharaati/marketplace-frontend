@@ -61,7 +61,6 @@ export default {
   methods: {
     async test() {
       const data = await this.$store.dispatch('user/testRepo')
-      console.log(data)
     },
   },
 }

@@ -1,4 +1,4 @@
-const userTokenName = 'marketplace_userTokenName'
+export const userTokenName = 'marketplace_userTokenName'
 
 export const state = () => ({
   auth: {
@@ -25,7 +25,9 @@ export const actions = {
 
   checkUserCookie({ commit }) {
     if (this.$cookies.get(userTokenName)) {
-      commit('setIsAuthenticated', true)
+      commit('setToken', this.$cookies.get(userTokenName), true)
+    } else {
+      commit('setIsAuthenticated', false)
     }
   },
 
