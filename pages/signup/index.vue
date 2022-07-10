@@ -23,11 +23,11 @@
                     type="text"
                   ></v-text-field>
                   <v-text-field
-                    v-model="nationalCodeModel"
-                    prepend-icon="mdi-contacts"
-                    name="nationalCode"
-                    label="National Code"
-                    type="text"
+                    v-model="phoneNumberModel"
+                    prepend-icon="mdi-phone"
+                    name="phoneNumber"
+                    label="Phone Number"
+                    type="number"
                   ></v-text-field>
                   <v-text-field
                     v-model="emailModel"
@@ -50,6 +50,7 @@
                     prepend-icon="mdi-lock"
                     name="passwordConfirm"
                     label="Password Confirm"
+                    :rules="[validation]"
                     type="password"
                   ></v-text-field>
                 </v-form>
@@ -73,7 +74,7 @@ export default {
     return {
       firstNameModel: null,
       lastNameModel: null,
-      nationalCodeModel: null,
+      phoneNumberModel: null,
       emailModel: null,
       passwordModel: null,
       passwordConfirmModel: null,
@@ -82,6 +83,13 @@ export default {
   methods: {
     onSubmit() {
       console.log('Submit')
+    },
+    validation(v) {
+      if (v === this.passwordModel) {
+        return true
+      } else {
+        return 'Confirm password should match password'
+      }
     },
   },
 }
