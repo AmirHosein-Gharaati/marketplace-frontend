@@ -23,6 +23,11 @@ export const actions = {
     }
   },
 
+  async logout({ commit }) {
+    this.$cookies.remove(userTokenName)
+    commit('setToken', null)
+  },
+
   checkUserCookie({ commit }) {
     if (this.$cookies.get(userTokenName)) {
       commit('setToken', this.$cookies.get(userTokenName), true)
@@ -42,7 +47,7 @@ export const actions = {
 export const mutations = {
   setToken(state, newToken) {
     state.auth.token = newToken
-    state.auth.isAuthenticated = true
+    state.auth.isAuthenticated = newToken ? true : false
   },
   setIsAuthenticated(state, value) {
     state.auth.isAuthenticated = value

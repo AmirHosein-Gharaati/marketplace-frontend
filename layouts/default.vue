@@ -35,27 +35,24 @@
         </div>
 
         <div class="navbar__right">
-          <v-menu
-            v-if="!isAuthenticated"
-            offset-y
-            transition="slide-y-transition"
-            bottom
-          >
+          <v-menu offset-y transition="slide-y-transition" bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-btn icon elevation="0" v-bind="attrs" v-on="on"
                 ><v-icon>mdi-account</v-icon>
                 <v-icon>mdi-chevron-down</v-icon>
               </v-btn>
             </template>
-            <v-list>
+            <v-list v-if="!isAuthenticated">
               <v-list-item v-for="(item, index) in dropDownItems" :key="index">
                 <router-link :to="item.to">{{ item.name }}</router-link>
               </v-list-item>
             </v-list>
+            <v-list v-else>
+              <v-list-item>
+                <v-btn @click="logout">Logout</v-btn>
+              </v-list-item>
+            </v-list>
           </v-menu>
-          <v-btn v-else icon elevation="0" to="/dashboard/profile"
-            ><v-icon>mdi-account</v-icon>
-          </v-btn>
         </div>
       </div>
     </v-app-bar>
@@ -122,6 +119,11 @@ export default {
         { name: 'Sign Up', to: '/signup' },
       ],
     }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/logout')
+    },
   },
   computed: {
     isAuthenticated() {
