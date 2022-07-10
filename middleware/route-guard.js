@@ -3,6 +3,6 @@ export default function ({ store, redirect, route, error }) {
   const isAuthenticated = store.getters['auth/getIsAuthenticated']
 
   if (path.startsWith('/dashboard') && !isAuthenticated) {
-    error('not authenticated')
+    error('error')
   }
 }

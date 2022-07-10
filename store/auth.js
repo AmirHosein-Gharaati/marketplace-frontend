@@ -8,7 +8,7 @@ export const state = () => ({
 })
 
 export const actions = {
-  async login({ dispatch }, payload) {
+  async login({ dispatch, getters }, payload) {
     try {
       const res = await this.$repositories.auth.login(payload)
       const { data: token } = res.data
@@ -25,14 +25,16 @@ export const actions = {
 
   async logout({ commit }) {
     this.$cookies.remove(userTokenName)
-    commit('setToken', null)
+    commit('setToken', { token: '', isAuthenticated: false })
   },
 
-  checkUserCookie({ commit }) {
-    if (this.$cookies.get(userTokenName)) {
-      commit('setToken', this.$cookies.get(userTokenName), true)
+  checkUserCookie({ commit, dispatch }) {
+    const token = this.$cookies.get(userTokenName)
+
+    if (token) {
+      dispatch('setUserToken', token)
     } else {
-      commit('setIsAuthenticated', false)
+      commit('setToken', { token: '', isAuthenticated: false })
     }
   },
 
@@ -40,14 +42,14 @@ export const actions = {
     this.$cookies.set(userTokenName, token, {
       maxAge: 60 * 60 * 24 * 7,
     })
-    commit('setToken', this.$cookies.get(userTokenName))
+    commit('setToken', { token: '', isAuthenticated: true })
   },
 }
 
 export const mutations = {
-  setToken(state, newToken) {
-    state.auth.token = newToken
-    state.auth.isAuthenticated = newToken ? true : false
+  setToken(state, { token, isAuthenticated }) {
+    state.auth.token = token
+    state.auth.isAuthenticated = isAuthenticated
   },
   setIsAuthenticated(state, value) {
     state.auth.isAuthenticated = value
