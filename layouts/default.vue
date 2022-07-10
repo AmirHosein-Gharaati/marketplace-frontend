@@ -109,10 +109,6 @@ export default {
           name: 'Products',
           to: '/products',
         },
-        {
-          name: 'FAQ',
-          to: '/faq',
-        },
       ],
       dropDownItems: [
         { name: 'Login', to: '/login' },
