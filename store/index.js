@@ -1,5 +1,7 @@
 export const state = () => ({
-  main: {},
+  main: {
+    categories: [],
+  },
 })
 
 export const actions = {
@@ -7,6 +9,25 @@ export const actions = {
     await dispatch('auth/checkUserCookie')
     if (getters['auth/getIsAuthenticated']) {
       await dispatch('user/getUserData')
+    }
+  },
+
+  async getAllCategories({ commit }) {
+    try {
+      const res = await this.$repositories.category.getMainCategories()
+      
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async getSubCategories({}, id) {
+    try {
+      const res = await this.$repositories.category.getSubCategories(id)
+      return res.data
+    } catch (error) {
+      console.log(error)
     }
   },
 }
