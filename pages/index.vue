@@ -8,7 +8,6 @@
         </div>
       </section>
     </div>
-    <v-btn @click="test()">Test</v-btn>
     <div class="container bg-secondary">
       <div>
         <h2 class="container txt">Our suggestion for you</h2>

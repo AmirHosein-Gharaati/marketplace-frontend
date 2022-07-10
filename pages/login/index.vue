@@ -51,8 +51,16 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
-      this.$router.push('/dashboard/profile')
+    async onSubmit() {
+      const payload = {
+        email: this.emailModel,
+        password: this.passwordModel,
+      }
+
+      const data = await this.$store.dispatch('auth/login', payload)
+
+      if (data) this.$router.push('/dashboard/profile')
+      else alert('Something went wrong!')
     },
   },
 }

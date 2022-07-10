@@ -1,25 +1,19 @@
 export const state = () => ({
   user: {
-    id: 1,
-    firstName: 'Amirhosein',
-    lastName: 'Gharaati',
-    email: 'amirgh1380@gmail.com',
-    phoneNumber: '09365721324',
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
     avatarUrl:
       'https://raw.githubusercontent.com/AmirHosein-Gharaati/portfolio/master/src/assets/images/me.png',
-    nationalId: '2283169240',
-    permissionName: 'normal',
+    nationalId: '',
+    permissionName: '',
   },
 })
 
 export const actions = {
-  async testRepo() {
-    const data = {
-      email: 'amirgh1380@gmail.com',
-      password: 'password',
-    }
-    return await this.$repositories.user.getUser(data)
-  },
+  async testRepo() {},
 }
 export const mutations = {
   setUser(state, newUser) {
