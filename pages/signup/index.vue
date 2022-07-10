@@ -91,7 +91,7 @@ export default {
       }
 
       const data = await this.$store.dispatch('auth/signUp', payload)
-      
+
       if (data.status == 'ok') {
         this.$router.push('/dashboard/profile')
       } else {
