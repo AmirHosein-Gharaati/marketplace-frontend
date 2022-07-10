@@ -4,9 +4,13 @@ export const state = () => ({
 })
 
 export const actions = {
-  async createReview(_, payload) {
+  async createReview({ rootGetters }, payload) {
     try {
-      const res = await this.$repositories.review.createReview(payload)
+      const token = rootGetters['auth/getToken']
+      const res = await this.$repositories.review.createReview({
+        payload,
+        token,
+      })
 
       return res.data
     } catch (error) {
@@ -14,9 +18,10 @@ export const actions = {
     }
   },
 
-  async updateReview(_, { id, payload }) {
+  async updateReview({ rootGetters }, { id, payload }) {
     try {
-      const res = await this.$repositories.review.update({ id, payload })
+      const token = rootGetters['auth/getToken']
+      const res = await this.$repositories.review.update({ id, payload, token })
 
       return res.data
     } catch (error) {

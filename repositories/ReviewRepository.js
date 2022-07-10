@@ -1,11 +1,21 @@
 const resource = '/reviews'
-
+// TODO
 export default ($axios) => ({
-  create(data) {
+  create({data, token}) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
     return $axios.post(`${resource}/create`, data)
   },
 
-  update({ id, data }) {
+  update({ id, data, token }) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
     return $axios.put(`${resource}/update/${id}`, data)
   },
 
