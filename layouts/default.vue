@@ -42,9 +42,15 @@
                 <v-icon>mdi-chevron-down</v-icon>
               </v-btn>
             </template>
-            <v-list>
+            <v-list v-if="!isAuthenticated">
               <v-list-item v-for="(item, index) in dropDownItems" :key="index">
                 <router-link :to="item.to">{{ item.name }}</router-link>
+              </v-list-item>
+            </v-list>
+            <v-list v-else>
+              <v-list-item class="d-flex flex-column">
+                <v-btn class="mb-2" to="/dashboard/profile">Profile</v-btn>
+                <v-btn @click="logout">Logout</v-btn>
               </v-list-item>
             </v-list>
           </v-menu>
@@ -104,16 +110,22 @@ export default {
           name: 'Products',
           to: '/products',
         },
-        {
-          name: 'FAQ',
-          to: '/faq',
-        },
       ],
       dropDownItems: [
         { name: 'Login', to: '/login' },
         { name: 'Sign Up', to: '/signup' },
       ],
     }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/logout')
+    },
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters['auth/getIsAuthenticated']
+    },
   },
 }
 </script>

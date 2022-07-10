@@ -8,7 +8,6 @@
         </div>
       </section>
     </div>
-
     <div class="container bg-secondary">
       <div>
         <h2 class="container txt">Our suggestion for you</h2>
@@ -58,6 +57,11 @@ export default {
   name: 'Homepage',
   components: {
     CardItem,
+  },
+  methods: {
+    async test() {
+      const data = await this.$store.dispatch('user/testRepo')
+    },
   },
 }
 </script>
