@@ -35,7 +35,12 @@
         </div>
 
         <div class="navbar__right">
-          <v-menu offset-y transition="slide-y-transition" bottom>
+          <v-menu
+            v-if="!isAuthenticated"
+            offset-y
+            transition="slide-y-transition"
+            bottom
+          >
             <template v-slot:activator="{ on, attrs }">
               <v-btn icon elevation="0" v-bind="attrs" v-on="on"
                 ><v-icon>mdi-account</v-icon>
@@ -48,6 +53,9 @@
               </v-list-item>
             </v-list>
           </v-menu>
+          <v-btn v-else icon elevation="0" to="/dashboard/profile"
+            ><v-icon>mdi-account</v-icon>
+          </v-btn>
         </div>
       </div>
     </v-app-bar>
@@ -114,6 +122,11 @@ export default {
         { name: 'Sign Up', to: '/signup' },
       ],
     }
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters['auth/getIsAuthenticated']
+    },
   },
 }
 </script>
