@@ -89,7 +89,7 @@ export default {
         email: this.emailModel,
         password: this.passwordModel,
       }
-      
+
       const data = await this.$store.dispatch('auth/signUp', payload)
 
       if (data.status == 'ok') {

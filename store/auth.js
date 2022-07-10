@@ -26,7 +26,7 @@ export const actions = {
   async signUp({ dispatch }, payload) {
     try {
       const res = await this.$repositories.auth.signUp(payload)
-      console.log('hello');
+      console.log('hello')
       if (res.data.status == 'ok') {
         dispatch('login', {
           email: payload.email,
