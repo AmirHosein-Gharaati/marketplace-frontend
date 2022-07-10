@@ -51,6 +51,10 @@ export default {
     baseURL: 'http://localhost:4040/api/v2',
   },
 
+  router: {
+    middleware: 'route-guard',
+  },
+
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     theme: {
