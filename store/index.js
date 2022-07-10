@@ -15,7 +15,7 @@ export const actions = {
   async getAllCategories({ commit }) {
     try {
       const res = await this.$repositories.category.getMainCategories()
-      
+
       return res.data
     } catch (error) {
       console.log(error)
