@@ -58,7 +58,7 @@
       </div>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-model="drawer" temporary fixed>
       <Category
         v-for="cat in categories"
         :key="cat.id"
