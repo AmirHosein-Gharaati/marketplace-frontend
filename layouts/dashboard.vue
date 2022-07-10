@@ -190,10 +190,6 @@ export default {
           name: 'Products',
           to: '/products',
         },
-        {
-          name: 'FAQ',
-          to: '/faq',
-        },
       ],
       userDrawerRoutes: [
         {
