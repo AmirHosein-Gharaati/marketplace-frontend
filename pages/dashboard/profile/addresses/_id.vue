@@ -94,8 +94,13 @@ export default {
         payload: payload,
       })
     },
-    onDelete() {
-      console.log('Deleting')
+    async onDelete() {
+      const data = await this.$store.dispatch('address/deleteAddress', this.id)
+      console.log(data)
+
+      if (data.status == 'ok') {
+        this.$router.replace('./')
+      }
     },
   },
   data() {
