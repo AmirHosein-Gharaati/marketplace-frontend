@@ -13,8 +13,8 @@ export default ($axiosClient) => ({
     return $axiosClient.post(`${resource}/create`, data)
   },
 
-  update({ data, id }) {
-    return $axiosClient.post(`${resource}/update/${id}`, data)
+  update({ payload, id }) {
+    return $axiosClient.post(`${resource}/update/${id}`, payload)
   },
 
   delete(id) {

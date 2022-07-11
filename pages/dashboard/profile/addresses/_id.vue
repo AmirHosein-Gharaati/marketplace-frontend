@@ -79,8 +79,20 @@ export default {
       const data = await this.$store.dispatch('address/getAddressById', this.id)
       this.address = data.address
     },
-    onEdit() {
-      console.log('Submitted!')
+    async onEdit() {
+      const payload = {
+        country: this.address.country,
+        province: this.address.province,
+        city: this.address.city,
+        street: this.address.street,
+        postal_code: this.address.postal_code,
+        home_phone_number: this.address.home_phone_number,
+      }
+
+      const data = await this.$store.dispatch('address/updateAddress', {
+        id: this.id,
+        payload: payload,
+      })
     },
     onDelete() {
       console.log('Deleting')
