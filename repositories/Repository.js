@@ -4,6 +4,7 @@ import CategoriesRepository from './repos/CategoriesRepository'
 import ProductRepository from './repos/ProductRepository'
 import ReviewRepository from './repos/ReviewRepository'
 import VoteRepository from './repos/VoteRepository'
+import AddressRepository from './repos/AddressRepository'
 
 export default ({ $axios, $axiosClient }) => {
   return {
@@ -13,5 +14,6 @@ export default ({ $axios, $axiosClient }) => {
     product: ProductRepository($axios),
     review: ReviewRepository($axiosClient),
     vote: VoteRepository($axiosClient),
+    address: AddressRepository($axiosClient),
   }
 }
