@@ -1,9 +1,9 @@
-import UserRepository from './UserRepository'
-import AuthRepository from './AuthRepository'
-import CategoriesRepository from './CategoriesRepository'
-import ProductRepository from './ProductRepository'
-import ReviewRepository from './ReviewRepository'
-import VoteRepository from './VoteRepository'
+import UserRepository from './repos/UserRepository'
+import AuthRepository from './repos/AuthRepository'
+import CategoriesRepository from './repos/CategoriesRepository'
+import ProductRepository from './repos/ProductRepository'
+import ReviewRepository from './repos/ReviewRepository'
+import VoteRepository from './repos/VoteRepository'
 
 export default ({ $axios, $axiosClient }) => {
   return {
