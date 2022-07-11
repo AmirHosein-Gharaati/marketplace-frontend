@@ -15,7 +15,7 @@
           <v-container>
             <v-row>
               <v-col v-for="n in 5" :key="n">
-                <CardItem />
+                <!-- <CardItem /> -->
               </v-col>
             </v-row>
             <div class="line"></div>
@@ -28,7 +28,7 @@
           <v-container>
             <v-row>
               <v-col v-for="n in 5" :key="n">
-                <CardItem />
+                <!-- <CardItem /> -->
               </v-col>
             </v-row>
             <div class="line"></div>
@@ -41,7 +41,7 @@
           <v-container>
             <v-row>
               <v-col v-for="n in 5" :key="n">
-                <CardItem />
+                <!-- <CardItem /> -->
               </v-col>
             </v-row>
           </v-container>

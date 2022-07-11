@@ -84,7 +84,7 @@ export default {
     return {
       priceFrom: null,
       priceTo: null,
-      sortByModel: 1,
+      sortByModel: 4,
       products: [],
       sortItems: [
         {
@@ -147,6 +147,9 @@ export default {
       )
 
       this.products = data.products
+    },
+    navigate(product) {
+      console.log(product)
     },
   },
 }

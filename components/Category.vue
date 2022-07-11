@@ -8,6 +8,9 @@
           </div>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
+          <v-list-item @click="navigate" link>
+            <v-list-item-title>{{ category.name }}</v-list-item-title>
+          </v-list-item>
           <v-list nav dense>
             <Category
               v-for="item in items"
@@ -20,7 +23,7 @@
       </v-expansion-panel>
     </v-expansion-panels>
 
-    <v-list-item @click="navigate" v-else link>
+    <v-list-item v-else @click="navigate" link>
       <v-list-item-title>{{ category.name }}</v-list-item-title>
     </v-list-item>
   </div>

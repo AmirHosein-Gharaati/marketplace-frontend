@@ -1,5 +1,5 @@
 <template>
-  <div class="card-item">
+  <div @click="navigate" class="card-item">
     <div class="card-item__main">
       <h4>{{ product.name }}</h4>
     </div>
@@ -13,8 +13,10 @@
 export default {
   name: 'CardItem',
   props: ['product'],
-  mounted() {
-    console.log(this.product)
+  methods: {
+    navigate() {
+      this.$router.replace(`/${this.product.id}`)
+    },
   },
 }
 </script>
