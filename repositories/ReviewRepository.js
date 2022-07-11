@@ -10,7 +10,7 @@ export default ($axiosClient) => ({
   },
 
   getAll() {
-    console.log($axiosClient);
+    console.log($axiosClient)
     return $axiosClient.get(`${resource}/me`)
   },
 
