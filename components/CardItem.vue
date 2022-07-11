@@ -15,7 +15,8 @@ export default {
   props: ['product'],
   methods: {
     navigate() {
-      this.$router.replace(`/${this.product.id}`)
+      const currentPath = this.$router.currentRoute.path
+      this.$router.push(`${currentPath}/${this.product.id}`)
     },
   },
 }

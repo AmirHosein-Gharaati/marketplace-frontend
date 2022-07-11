@@ -148,9 +148,6 @@ export default {
 
       this.products = data.products
     },
-    navigate(product) {
-      console.log(product)
-    },
   },
 }
 </script>

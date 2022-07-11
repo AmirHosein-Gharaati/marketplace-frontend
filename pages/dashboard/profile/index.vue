@@ -65,11 +65,11 @@ export default {
   name: 'Dashboard',
   layout: 'dashboard',
   mounted() {
-    this.$store.dispatch('user/getUserData')
+    this.setUser()
   },
   methods: {
-    setUser() {
-      console.log('This is setUser Button')
+    async setUser() {
+      await this.$store.dispatch('user/getUserData')
     },
   },
   computed: {

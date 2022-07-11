@@ -9,13 +9,9 @@
           <v-container fill-height>
             <v-col align-self="start">
               <v-row class="pb-12">Name: {{ product.name }}</v-row>
-              <v-row class="pb-12">Price: {{ product.price }}</v-row>
-              <v-row class="pb-12">Store: {{ product.store }}</v-row>
-              <v-row class="pb-12">Rating: {{ product.rating }}</v-row>
             </v-col>
             <v-col align-self="start">
               <v-row class="pb-12">Brand: {{ product.brand }}</v-row>
-              <v-row class="pb-12">Discount: {{ product.discount }}</v-row>
             </v-col>
           </v-container>
         </div>
@@ -31,7 +27,7 @@
         <div class="line"></div>
       </div>
 
-      <div class="product-detail__specification">
+      <div v-if="product.specification" class="product-detail__specification">
         <h2 class="txt pb-4">Specification</h2>
         <div
           class="px-8"
@@ -54,7 +50,7 @@
         <div class="line"></div>
       </div>
 
-      <div>
+      <!-- <div>
         <h2 class="txt pb-4">Similar items</h2>
         <section>
           <v-container>
@@ -65,7 +61,7 @@
             </v-row>
           </v-container>
         </section>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -77,9 +73,32 @@ export default {
   components: {
     Review,
   },
+
   asyncData({ params }) {
     return {
       id: params.id,
+    }
+  },
+  data() {
+    return {
+      defaultImageUrl:
+        'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png',
+      reviews: [],
+      product: {
+        id: 1,
+        name: '',
+        brand: '',
+        category_id: 1,
+        description: '',
+        specification: null,
+        image: '',
+        description: "I don't know what to say about this shitty phone!",
+      },
+    }
+  },
+  beforeCreate() {
+    if (!this.$store.getters['auth/getIsAuthenticated']) {
+      this.$router.replace('./')
     }
   },
   mounted() {
@@ -97,11 +116,13 @@ export default {
         this.id
       )
 
+      this.product = productData.product
+
       const reviewsData = await this.$store.dispatch(
         'review/getProductsReviewSortedByDate',
         this.id
       )
-      this.reviews = reviewsData.reviews
+      if (reviewsData.reviews) this.reviews = reviewsData.reviews
     },
     async onSubscribe() {
       const data = await this.$store.dispatch('notification/subscribe', this.id)
@@ -112,29 +133,6 @@ export default {
         alert('Something went wrong')
       }
     },
-  },
-  data() {
-    return {
-      defaultImageUrl:
-        'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png',
-      reviews: [],
-      product: {
-        id: 1,
-        name: 'IPhone 6s',
-        image: '',
-        brand: 'Apple',
-        price: '2000$',
-        store: 'PC Center',
-        discount: 0,
-        rating: 2.4,
-        description: "I don't know what to say about this shitty phone!",
-        specification: {
-          cpu: '2.4Ghz',
-          ram: '8GB',
-          hard: '1TB',
-        },
-      },
-    }
   },
 }
 </script>

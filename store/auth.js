@@ -12,11 +12,8 @@ export const actions = {
     try {
       const res = await this.$repositories.auth.login(payload)
       const { data: token } = res.data
-
-      if (this.$cookies.get(userTokenName) !== token) {
-        dispatch('setUserToken', token)
-      }
-
+      await dispatch('setUserToken', token)
+      
       return res.data
     } catch (error) {
       console.log(error)
@@ -41,8 +38,8 @@ export const actions = {
   },
 
   async logout({ commit }) {
-    this.$cookies.remove(userTokenName)
-    commit('setToken', { token: '', isAuthenticated: false })
+    await this.$cookies.remove(userTokenName)
+    await commit('setToken', { token: '', isAuthenticated: false })
   },
 
   checkUserCookie({ commit, dispatch }) {
@@ -51,6 +48,7 @@ export const actions = {
     if (token) {
       dispatch('setUserToken', token)
     } else {
+      this.$cookies.remove(userTokenName)
       commit('setToken', { token: '', isAuthenticated: false })
     }
   },
