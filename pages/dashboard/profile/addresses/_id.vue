@@ -55,6 +55,7 @@
         </v-card-text>
         <v-card-actions class="justify-center pb-8">
           <v-btn @click="onSubmit()">Edit</v-btn>
+          <v-btn class="red" @click="onDelete()">Delete</v-btn>
         </v-card-actions>
       </v-card>
     </div>
@@ -85,6 +86,9 @@ export default {
   methods: {
     onSubmit() {
       console.log('Submitted!')
+    },
+    onDelete() {
+      console.log('Deleting')
     },
   },
 }
