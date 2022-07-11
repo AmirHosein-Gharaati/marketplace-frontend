@@ -93,6 +93,10 @@ export default {
         id: this.id,
         payload: payload,
       })
+
+      if (data.status == 'ok') {
+        this.$router.replace('./')
+      }
     },
     async onDelete() {
       const data = await this.$store.dispatch('address/deleteAddress', this.id)
