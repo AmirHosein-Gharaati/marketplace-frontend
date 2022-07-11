@@ -21,6 +21,10 @@
         </div>
       </div>
 
+      <div v-if="isAuthenticated" class="d-flex justify-center">
+        <v-btn @click="onSubscribe">Subscribe</v-btn>
+      </div>
+
       <div class="product-detail__description">
         <h2 class="txt pb-4">Description</h2>
         <p class="px-8">{{ product.description }}</p>
@@ -81,6 +85,11 @@ export default {
   mounted() {
     this.getProduct()
   },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters['auth/getIsAuthenticated']
+    },
+  },
   methods: {
     async getProduct() {
       const productData = await this.$store.dispatch(
@@ -93,6 +102,15 @@ export default {
         this.id
       )
       this.reviews = reviewsData.reviews
+    },
+    async onSubscribe() {
+      const data = await this.$store.dispatch('notification/subscribe', this.id)
+
+      if (data.status == 'ok') {
+        alert('Subscribed')
+      } else {
+        alert('Something went wrong')
+      }
     },
   },
   data() {
