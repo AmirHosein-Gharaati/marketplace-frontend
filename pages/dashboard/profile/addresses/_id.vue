@@ -11,18 +11,19 @@
               <v-row>
                 <v-col>
                   <v-text-field
+                    v-model="address.country"
                     label="Country"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    v-model="province"
+                    v-model="address.province"
                     label="Province"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    v-model="city"
+                    v-model="address.city"
                     label="City"
                     type="text"
                     outlined
@@ -30,19 +31,19 @@
                 </v-col>
                 <v-col>
                   <v-text-field
-                    v-model="street"
+                    v-model="address.street"
                     label="Street"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    v-model="postal_code"
+                    v-model="address.postal_code"
                     label="Postal Code"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    v-model="home_phone_number"
+                    v-model="address.home_phone_number"
                     label="Home Phone Number"
                     type="text"
                     outlined
@@ -76,14 +77,7 @@ export default {
   methods: {
     async getAddressById() {
       const data = await this.$store.dispatch('address/getAddressById', this.id)
-      // const address = data.address
-
-      // this.country = address.country
-      // this.province = address.province
-      // this.city = address.city
-      // this.street = address.street
-      // this.postal_code = address.postal_code
-      // this.home_phone_number = address.home_phone_number
+      this.address = data.address
     },
     onEdit() {
       console.log('Submitted!')
@@ -94,12 +88,14 @@ export default {
   },
   data() {
     return {
-      country: '',
-      province: '',
-      city: '',
-      street: '',
-      postal_code: '',
-      home_phone_number: '',
+      address: {
+        country: '',
+        province: '',
+        city: '',
+        street: '',
+        postal_code: '',
+        home_phone_number: '',
+      },
     }
   },
 }
