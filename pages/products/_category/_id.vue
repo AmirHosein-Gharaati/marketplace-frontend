@@ -73,7 +73,7 @@ export default {
   components: {
     Review,
   },
-  asyncData({ params, redirect }) {
+  asyncData({ params }) {
     return {
       id: params.id,
     }
@@ -100,22 +100,7 @@ export default {
       },
     }
   },
-  methods: {
-    productKeyIndex(colIndex, rowIndex) {
-      return (colIndex - 1) * this.colsAttrCount + (rowIndex - 1)
-    },
-  },
-  computed: {
-    productKeys() {
-      return Object.keys(this.product)
-    },
-    productDetailsLength() {
-      return this.productKeys.length - 2
-    },
-    gridColsNumber() {
-      return Math.ceil(this.productDetailsLength / this.colsAttrCount)
-    },
-  },
+  computed: {},
 }
 </script>
 
