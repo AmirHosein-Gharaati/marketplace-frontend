@@ -3,7 +3,7 @@
     <div class="product-detail">
       <div class="product-detail__main pb-8">
         <div class="product-detail__main__left">
-          <img :src="product.image" :alt="product.name" />
+          <img :src="defaultImageUrl" :alt="product.name" />
         </div>
         <div class="product-detail__main__right">
           <v-container fill-height>
@@ -42,10 +42,10 @@
         <div class="line"></div>
       </div>
 
-      <div class="product-detail__reviews">
+      <div v-if="reviews.length" class="product-detail__reviews">
         <h2 class="txt pb-4">Reviews</h2>
         <div class="product-detail__reviews__list">
-          <Review v-for="n in 2" :key="n" :id="n" />
+          <Review v-for="review in reviews" :key="review.id" :review="review" />
         </div>
         <div class="line"></div>
       </div>
@@ -73,19 +73,37 @@ export default {
   components: {
     Review,
   },
-  asyncData({ params, redirect }) {
+  asyncData({ params }) {
     return {
       id: params.id,
     }
   },
+  mounted() {
+    this.getProduct()
+  },
+  methods: {
+    async getProduct() {
+      const productData = await this.$store.dispatch(
+        'product/getProductById',
+        this.id
+      )
+
+      const reviewsData = await this.$store.dispatch(
+        'review/getProductsReviewSortedByDate',
+        this.id
+      )
+      this.reviews = reviewsData.reviews
+    },
+  },
   data() {
     return {
-      colsAttrCount: 4,
+      defaultImageUrl:
+        'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png',
+      reviews: [],
       product: {
         id: 1,
         name: 'IPhone 6s',
-        image:
-          'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png',
+        image: '',
         brand: 'Apple',
         price: '2000$',
         store: 'PC Center',
@@ -99,22 +117,6 @@ export default {
         },
       },
     }
-  },
-  methods: {
-    productKeyIndex(colIndex, rowIndex) {
-      return (colIndex - 1) * this.colsAttrCount + (rowIndex - 1)
-    },
-  },
-  computed: {
-    productKeys() {
-      return Object.keys(this.product)
-    },
-    productDetailsLength() {
-      return this.productKeys.length - 2
-    },
-    gridColsNumber() {
-      return Math.ceil(this.productDetailsLength / this.colsAttrCount)
-    },
   },
 }
 </script>
