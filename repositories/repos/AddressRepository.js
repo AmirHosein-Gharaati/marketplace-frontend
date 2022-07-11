@@ -5,6 +5,10 @@ export default ($axiosClient) => ({
     return $axiosClient.get(`${resource}/`)
   },
 
+  getById(id) {
+    return $axiosClient.get(`${resource}/${id}`)
+  },
+
   create(data) {
     return $axiosClient.post(`${resource}/create`, data)
   },

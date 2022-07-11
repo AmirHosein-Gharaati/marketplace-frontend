@@ -11,19 +11,18 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="address.country"
                     label="Country"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    v-model="address.province"
+                    v-model="province"
                     label="Province"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    v-model="address.city"
+                    v-model="city"
                     label="City"
                     type="text"
                     outlined
@@ -31,19 +30,19 @@
                 </v-col>
                 <v-col>
                   <v-text-field
-                    v-model="address.street"
+                    v-model="street"
                     label="Street"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    v-model="address.postal_code"
+                    v-model="postal_code"
                     label="Postal Code"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    v-model="address.home_phone_number"
+                    v-model="home_phone_number"
                     label="Home Phone Number"
                     type="text"
                     outlined
@@ -54,7 +53,7 @@
           </v-form>
         </v-card-text>
         <v-card-actions class="justify-center pb-8">
-          <v-btn @click="onSubmit()">Edit</v-btn>
+          <v-btn @click="onEdit()">Edit</v-btn>
           <v-btn class="red" @click="onDelete()">Delete</v-btn>
         </v-card-actions>
       </v-card>
@@ -71,25 +70,37 @@ export default {
       id: params.id,
     }
   },
-  data() {
-    return {
-      address: {
-        country: '',
-        province: '',
-        city: '',
-        street: '',
-        postal_code: '',
-        home_phone_number: '',
-      },
-    }
+  mounted() {
+    this.getAddressById()
   },
   methods: {
-    onSubmit() {
+    async getAddressById() {
+      const data = await this.$store.dispatch('address/getAddressById', this.id)
+      // const address = data.address
+
+      // this.country = address.country
+      // this.province = address.province
+      // this.city = address.city
+      // this.street = address.street
+      // this.postal_code = address.postal_code
+      // this.home_phone_number = address.home_phone_number
+    },
+    onEdit() {
       console.log('Submitted!')
     },
     onDelete() {
       console.log('Deleting')
     },
+  },
+  data() {
+    return {
+      country: '',
+      province: '',
+      city: '',
+      street: '',
+      postal_code: '',
+      home_phone_number: '',
+    }
   },
 }
 </script>

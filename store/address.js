@@ -13,6 +13,16 @@ export const actions = {
     }
   },
 
+  async getAddressById(_, id) {
+    try {
+      const res = await this.$repositories.address.getById(id)
+      
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
   async createAddress(_, payload) {
     try {
       const res = await this.$repositories.address.create(payload)
