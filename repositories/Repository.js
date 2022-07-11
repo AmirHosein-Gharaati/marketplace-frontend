@@ -10,7 +10,7 @@ import NotificationRepository from './repos/NotificationRepository'
 export default ({ $axios, $axiosClient }) => {
   return {
     auth: AuthRepository($axios),
-    user: UserRepository($axios),
+    user: UserRepository($axiosClient),
     category: CategoriesRepository($axios),
     product: ProductRepository($axios),
     review: ReviewRepository($axiosClient),

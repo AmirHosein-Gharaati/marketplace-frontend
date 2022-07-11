@@ -1,7 +1,7 @@
 <template>
   <div class="review px-8">
     <div class="review__info">
-      <span>{{ review.name }}</span> ● <span>{{ review.date }}</span> ●
+      <span>{{ user_review.first_name + ' ' + user_review.last_name }}</span> ●
       <span>{{ review.rate }}/5.0</span>
     </div>
     <div class="review__description pt-4">
@@ -30,17 +30,24 @@ export default {
   data() {
     return {
       review2: {
-        id: 5,
+        id: 0,
         product_id: 1,
         store_id: 1,
         user_id: 1,
         rate: 4.1,
-        review_text: 'this product is excellent',
-        created_at: '2022-07-09T11:41:16.399375+04:30',
+        review_text: 'text',
+        created_at: 'Date Time',
         up_votes: 0,
         down_votes: 0,
       },
+      user_review: {
+        first_name: '',
+        last_name: '',
+      },
     }
+  },
+  mounted() {
+    this.getUser(this.review.user_id)
   },
   methods: {
     async sendVote(value) {
@@ -52,6 +59,12 @@ export default {
 
       const data = await this.$store.dispatch('vote/createVote', payload)
       console.log(data)
+    },
+
+    async getUser(id) {
+      const data = await this.$store.dispatch('user/getById', id)
+
+      this.user_review = data.user
     },
   },
 }

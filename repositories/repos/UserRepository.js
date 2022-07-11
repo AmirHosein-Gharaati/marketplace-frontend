@@ -1,13 +1,11 @@
 const resource = '/users'
 
-export default ($axios) => ({
-  get(token) {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-
-    return $axios.get(`${resource}/me`, config)
+export default ($axiosClient) => ({
+  get() {
+    return $axiosClient.get(`${resource}/me`)
   },
+
+  getById(id) {
+    return $axiosClient.get(`${resource}/${id}`)
+  }
 })

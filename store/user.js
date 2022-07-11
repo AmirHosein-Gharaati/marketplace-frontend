@@ -13,12 +13,22 @@ export const state = () => ({
 })
 
 export const actions = {
-  async getUserData({ commit, rootGetters }) {
+  async getUserData({ commit }) {
     try {
-      const token = rootGetters['auth/getToken']
-
-      const { data } = await this.$repositories.user.get(token)
+      const res = await this.$repositories.user.get()
       commit('setUser', data.user)
+
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async getUserById(_, id) {
+    try {
+      const res = await this.$repositories.user.getById(id)
+
+      return res.data
     } catch (error) {
       console.log(error)
     }
