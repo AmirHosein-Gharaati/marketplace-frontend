@@ -4,12 +4,10 @@ export const state = () => ({
 })
 
 export const actions = {
-  async createReview({ rootGetters }, payload) {
+  async createReview(_, payload) {
     try {
-      const token = rootGetters['auth/getToken']
       const res = await this.$repositories.review.createReview({
         payload,
-        token,
       })
 
       return res.data
@@ -18,10 +16,9 @@ export const actions = {
     }
   },
 
-  async updateReview({ rootGetters }, { id, payload }) {
+  async updateReview(_, { id, payload }) {
     try {
-      const token = rootGetters['auth/getToken']
-      const res = await this.$repositories.review.update({ id, payload, token })
+      const res = await this.$repositories.review.update({ id, payload })
 
       return res.data
     } catch (error) {
@@ -29,10 +26,9 @@ export const actions = {
     }
   },
 
-  async getUserAllReviews({ rootGetters }) {
+  async getUserAllReviews() {
     try {
-      const token = rootGetters['auth/getToken']
-      const res = await this.$repositories.review.getAll(token)
+      const res = await this.$repositories.review.getAll()
 
       return res.data
     } catch (error) {
@@ -40,12 +36,10 @@ export const actions = {
     }
   },
 
-  async getProductsReviewSortedById({ rootGetters }, id) {
+  async getProductsReviewSortedById(_, id) {
     try {
-      const token = rootGetters['auth/getToken']
       const res = await this.$repositories.review.getProductReviewSortedByDate({
         id,
-        token,
       })
 
       return res.data
@@ -54,13 +48,11 @@ export const actions = {
     }
   },
 
-  async getProductsReviewSortedByVotes({ rootGetters }, id) {
+  async getProductsReviewSortedByVotes(_, id) {
     try {
-      const token = rootGetters['auth/getToken']
       const res = await this.$repositories.review.getProductReviewSortedByVotes(
         {
           id,
-          token,
         }
       )
 
