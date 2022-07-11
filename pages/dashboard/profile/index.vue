@@ -64,14 +64,6 @@
 export default {
   name: 'Dashboard',
   layout: 'dashboard',
-  mounted() {
-    this.setUser()
-  },
-  methods: {
-    async setUser() {
-      await this.$store.dispatch('user/getUserData')
-    },
-  },
   computed: {
     user() {
       return this.$store.getters['user/getUser']

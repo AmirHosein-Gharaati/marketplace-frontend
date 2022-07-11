@@ -247,10 +247,17 @@ export default {
     },
   },
   mounted() {
-    this.getNotifications()
-    this.getPendingNotifications()
+    this.init()
   },
   methods: {
+    async init() {
+      await this.setUser()
+      this.getNotifications()
+      this.getPendingNotifications()
+    },
+    async setUser() {
+      await this.$store.dispatch('user/getUserData')
+    },
     async getNotifications() {
       const data = await this.$store.dispatch('notification/getAllAvailable')
 
@@ -258,8 +265,9 @@ export default {
     },
     async getPendingNotifications() {
       const data = await this.$store.dispatch('notification/getAllPending')
-
-      this.pendingNotifications = data.productIds
+      if (data) {
+        this.pendingNotifications = data.productIds
+      }
     },
     async onNotificationButtonPressed() {
       this.dialog = true
