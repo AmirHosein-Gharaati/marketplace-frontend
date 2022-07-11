@@ -8,11 +8,11 @@
       <p>{{ review.review_text }}</p>
     </div>
     <div class="review__buttons">
-      <v-btn icon
+      <v-btn icon @click="sendVote('up')"
         ><v-icon>mdi-thumb-up</v-icon>
         <div v-if="review.likes">{{ review.up_votes }}</div></v-btn
       >
-      <v-btn icon
+      <v-btn icon @click="sendVote('down')"
         ><v-icon>mdi-thumb-down</v-icon>
         <div v-if="review.dislikes">{{ review.down_votes }}</div></v-btn
       >
@@ -30,19 +30,27 @@ export default {
   data() {
     return {
       review2: {
-        id: 1,
+        id: 5,
         product_id: 1,
         store_id: 1,
         user_id: 1,
         rate: 4.1,
         review_text: 'this product is excellent',
         created_at: '2022-07-09T11:41:16.399375+04:30',
-        up_votes: 0,
-        down_votes: 0,
       },
     }
   },
+  methods: {
+    async sendVote(value) {
+      const payload = {
+        review_id: this.review.id,
+        up_vote: value == 'up' ? true : false,
+        down_vote: value == 'down' ? false : true,
+      }
+
+      const data = await this.$store.dispatch('vote/createVote', payload)
+      console.log(data)
+    },
+  },
 }
 </script>
-
-<style></style>
