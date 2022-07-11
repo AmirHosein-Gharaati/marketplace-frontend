@@ -58,9 +58,11 @@
         </div>
       </div>
       <v-container>
-        <v-row class="py-2" v-for="rowCount in 5" :key="rowCount">
+        <v-row class="py-2" v-for="rowCount in numberOfRows" :key="rowCount">
           <v-col v-for="colCount in 5" :key="colCount">
-            <CardItem />
+            <template v-if="getProductByIndex(rowCount, colCount)">
+              <CardItem :product="getProductByIndex(rowCount, colCount)" />
+            </template>
           </v-col>
         </v-row>
       </v-container>
@@ -83,6 +85,7 @@ export default {
       priceFrom: null,
       priceTo: null,
       sortByModel: 1,
+      products: [],
       sortItems: [
         {
           id: 1,
@@ -125,7 +128,26 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.getProductsByCategory()
+  },
+  computed: {
+    numberOfRows() {
+      return Math.ceil(this.products.length / 5)
+    },
+  },
+  methods: {
+    getProductByIndex(row, col) {
+      return this.products[(row - 1) * 5 - (col - 1)]
+    },
+    async getProductsByCategory() {
+      const data = await this.$store.dispatch(
+        'product/getProductsByCategoryId',
+        this.category
+      )
+
+      this.products = data.products
+    },
+  },
 }
 </script>
-
-<style></style>

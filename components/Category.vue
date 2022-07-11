@@ -46,7 +46,7 @@ export default {
       }
     },
     navigate() {
-      this.$router.push(`/products/${this.category.name}`)
+      this.$router.push(`/products/${this.category.id}`)
     },
   },
   data() {

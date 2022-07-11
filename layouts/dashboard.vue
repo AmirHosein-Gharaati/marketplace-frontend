@@ -200,10 +200,6 @@ export default {
           name: 'Home',
           to: '/',
         },
-        {
-          name: 'Products',
-          to: '/products',
-        },
       ],
       userDrawerRoutes: [
         {
