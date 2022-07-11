@@ -36,7 +36,7 @@ export const actions = {
     }
   },
 
-  async getProductsReviewSortedById(_, id) {
+  async getProductsReviewSortedByDate(_, id) {
     try {
       const res = await this.$repositories.review.getProductReviewSortedByDate({
         id,
