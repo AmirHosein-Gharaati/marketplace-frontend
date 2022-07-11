@@ -11,60 +11,44 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    name="name"
-                    label="Name"
-                    type="text"
-                    outlined
-                  ></v-text-field>
-                  <v-text-field
-                    name="country"
+                    v-model="address.country"
                     label="Country"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    name="city"
-                    label="City"
+                    v-model="address.province"
+                    label="Province"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    name="postal code"
-                    label="Postal code"
+                    v-model="address.city"
+                    label="City"
                     type="text"
                     outlined
                   ></v-text-field>
                 </v-col>
                 <v-col>
                   <v-text-field
-                    name="owner"
-                    label="Owner"
-                    type="text"
-                    outlined
-                  ></v-text-field>
-                  <v-text-field
-                    name="province"
-                    label="Province"
-                    type="text"
-                    outlined
-                  ></v-text-field>
-                  <v-text-field
-                    name="street"
+                    v-model="address.street"
                     label="Street"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    prepend-inner-icon="mdi-attachment"
-                    name="avatar"
-                    label="avatar"
+                    v-model="address.postal_code"
+                    label="Postal Code"
+                    type="text"
+                    outlined
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="address.home_phone_number"
+                    label="Home Phone Number"
                     type="text"
                     outlined
                   ></v-text-field>
                 </v-col>
-              </v-row>
-              <v-row>
-                <v-textarea outlined placeholder="Description"></v-textarea>
               </v-row>
             </v-container>
           </v-form>
@@ -79,14 +63,27 @@
 
 <script>
 export default {
-  name: 'AddressNew',
+  name: 'AddressDetail',
   layout: 'dashboard',
   data() {
-    return {}
+    return {
+      address: {
+        country: '',
+        province: '',
+        city: '',
+        street: '',
+        postal_code: '',
+        home_phone_number: '',
+      },
+    }
   },
   methods: {
-    onSubmit() {
-      console.log('Submitted!')
+    async onSubmit() {
+      const data = await this.$store.dispatch(
+        'address/createAddress',
+        this.address
+      )
+      console.log(data)
     },
   },
 }

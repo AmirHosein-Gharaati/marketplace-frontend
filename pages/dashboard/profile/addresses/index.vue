@@ -15,8 +15,8 @@
         </v-card-title>
         <v-data-table
           :headers="headers"
-          :items="addressItems"
-          :items-per-page="7"
+          :items="addresses"
+          :items-per-page="5"
           :search="search"
           @click:row="navigate"
         ></v-data-table>
@@ -44,19 +44,18 @@ export default {
           value: 'city',
         },
       ],
-      addressItems: [
-        {
-          id: 1,
-          city: 'Shiraz',
-        },
-        {
-          id: 2,
-          city: 'Estahban',
-        },
-      ],
+      addresses: [],
     }
   },
+  mounted() {
+    this.getAllAddresses()
+  },
   methods: {
+    async getAllAddresses() {
+      const data = await this.$store.dispatch('address/getAllAddresses')
+
+      this.addresses = data.addresses
+    },
     navigate(value) {
       const { id } = value
       this.$router.push(`/dashboard/profile/addresses/${id}`)
