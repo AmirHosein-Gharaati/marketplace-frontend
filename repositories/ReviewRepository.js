@@ -10,7 +10,8 @@ export default ($axiosClient) => ({
   },
 
   getAll() {
-    return $axiosClient.get(`${resource}/me`, config)
+    console.log($axiosClient);
+    return $axiosClient.get(`${resource}/me`)
   },
 
   getProductReviewSortedByDate({ id }) {

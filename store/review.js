@@ -26,7 +26,7 @@ export const actions = {
     }
   },
 
-  async getUserAllReviews() {
+  async getAllUserReviews() {
     try {
       const res = await this.$repositories.review.getAll()
 
