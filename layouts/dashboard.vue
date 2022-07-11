@@ -62,10 +62,24 @@
 
               <v-card-text>
                 <v-list>
+                  <h2 class="pt-2">Available</h2>
                   <v-list-item
-                    v-for="notification in notifications"
-                    :key="notification.id"
-                    >{{ notification.text }}</v-list-item
+                    v-for="notificationId in availableNotifications"
+                    :key="notificationId"
+                    >{{ notificationId }}</v-list-item
+                  >
+                </v-list>
+              </v-card-text>
+
+              <v-divider></v-divider>
+
+              <v-card-text>
+                <v-list>
+                  <h2 class="pt-2">Pending</h2>
+                  <v-list-item
+                    v-for="notificationId in pendingNotifications"
+                    :key="notificationId"
+                    >{{ notificationId }}</v-list-item
                   >
                 </v-list>
               </v-card-text>
@@ -221,16 +235,8 @@ export default {
           to: '/dashboard/product/edit',
         },
       ],
-      notifications: [
-        {
-          id: 1,
-          text: 'This is first notification',
-        },
-        {
-          id: 2,
-          text: 'This is second notification',
-        },
-      ],
+      availableNotifications: [],
+      pendingNotifications: [],
     }
   },
   computed: {
@@ -238,13 +244,36 @@ export default {
       return this.$store.getters['user/getUser']
     },
     haveMessage() {
-      return this.notifications.length > 0 && !this.notificationButtonPressed
+      return (
+        this.availableNotifications.length > 0 &&
+        !this.notificationButtonPressed
+      )
     },
   },
+  mounted() {
+    this.getNotifications()
+    this.getPendingNotifications()
+  },
   methods: {
-    onNotificationButtonPressed() {
+    async getNotifications() {
+      const data = await this.$store.dispatch('notification/getAllAvailable')
+
+      this.availableNotifications = data.productIds
+    },
+    async getPendingNotifications() {
+      const data = await this.$store.dispatch('notification/getAllPending')
+
+      this.pendingNotifications = data.productIds
+    },
+    async onNotificationButtonPressed() {
       this.dialog = true
       this.notificationButtonPressed = true
+
+      await this.availableNotifications.forEach((productId) => {
+        this.$store.dispatch('notification/sendSeen', productId)
+      })
+
+      console.log('Send seen event completed')
     },
   },
 }
