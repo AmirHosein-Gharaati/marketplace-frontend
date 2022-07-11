@@ -83,7 +83,12 @@ export default {
         'address/createAddress',
         this.address
       )
+
       console.log(data)
+
+      if (data.status == 'ok') {
+        this.$router.replace('./')
+      }
     },
   },
 }
