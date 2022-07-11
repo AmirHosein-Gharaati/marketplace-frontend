@@ -37,6 +37,8 @@ export default {
         rate: 4.1,
         review_text: 'this product is excellent',
         created_at: '2022-07-09T11:41:16.399375+04:30',
+        up_votes: 0,
+        down_votes: 0,
       },
     }
   },
