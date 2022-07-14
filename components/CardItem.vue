@@ -16,7 +16,8 @@ export default {
   methods: {
     navigate() {
       const currentPath = this.$router.currentRoute.path
-      this.$router.push(`${currentPath}/${this.product.id}`)
+      const category = currentPath.split('/')[2]
+      this.$router.push(`/products/${category}/${this.product.id}`)
     },
   },
 }
