@@ -18,7 +18,7 @@
           :items="tickets"
           :items-per-page="5"
           :search="search"
-          @click:row="navigateToTicket"
+          @click:row="createTicket"
         ></v-data-table>
       </v-card>
 
@@ -26,7 +26,19 @@
         <div class="line"></div>
       </v-container>
 
-      <v-btn @click="navigateToCreate">Create Ticket</v-btn>
+      <div class="ticket__create">
+        <v-btn height="100%">Create Ticket</v-btn>
+        <div class="mx-4"></div>
+        <v-select
+          v-model="ticketTypeModel"
+          solo
+          hide-details
+          :items="ticketTypes"
+          item-text="name"
+          item-value="id"
+          label="Ticket Type"
+        ></v-select>
+      </div>
     </div>
   </div>
 </template>
@@ -38,7 +50,7 @@ export default {
   data() {
     return {
       search: null,
-      createTicketTypeModel: null,
+      ticketTypeModel: null,
       headers: [
         {
           text: 'ID',
@@ -53,12 +65,23 @@ export default {
     this.$store.dispatch('ticket/init')
   },
   methods: {
-    navigateToTicket() {},
-    navigateToCreate() {},
+    async createTicket() {
+      const data = await this.$store.dispatch(
+        'ticket/createTicket',
+        this.ticketTypeModel
+      )
+
+      if (!!data.ticket_id) {
+        this.$router.push(`/dashboard/ticket/${data.ticket_id}`)
+      }
+    },
   },
   computed: {
     tickets() {
       return this.$store.getters['ticket/getTickets']
+    },
+    ticketTypes() {
+      return this.$store.getters['ticket/getTicketTypes']
     },
   },
 }
