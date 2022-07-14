@@ -57,6 +57,7 @@ export const mutations = {
   setToken(state, { token, isAuthenticated }) {
     this.$cookies.set(userTokenName, token, {
       maxAge: 60 * 60 * 24 * 3,
+      path: '/',
     })
     state.auth.token = token
     state.auth.isAuthenticated = isAuthenticated
