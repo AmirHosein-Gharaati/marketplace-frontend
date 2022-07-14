@@ -9,6 +9,10 @@ export default ({ $axios, $axiosClient }) => ({
     return $axios.get(`${resource}/${productId}`)
   },
 
+  getAllStoresOfProduct(productId) {
+    return $axios.get(`${resource}/stores/${productId}`)
+  },
+
   getBrandsByCategoryId(categoryId) {
     return $axios.get(`${resource}/brands/${categoryId}`)
   },

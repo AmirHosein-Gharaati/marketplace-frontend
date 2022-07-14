@@ -24,6 +24,18 @@ export const actions = {
     }
   },
 
+  async getAllStoresOfProduct(_, productId) {
+    try {
+      const res = await this.$repositories.product.getAllStoresOfProduct(
+        productId
+      )
+
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
   async getBrandsByCategoryId({ commit }, categoryId) {
     try {
       const res = await this.$repositories.product.getBrandsByCategoryId(

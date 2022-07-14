@@ -9,9 +9,21 @@
           <v-container fill-height>
             <v-col align-self="start">
               <v-row class="pb-12">Name: {{ product.name }}</v-row>
+              <v-row v-if="storeModel" class="pb-12"
+                >Price: {{ storeModel.price }}</v-row
+              >
+              <v-row v-if="storeModel" class="pb-12"
+                >Available Count: {{ storeModel.available_count }}</v-row
+              >
             </v-col>
             <v-col align-self="start">
-              <v-row class="pb-12">Brand: {{ product.brand }}</v-row>
+              <v-row class="pb-12">Brand: {{ product.brand }}</v-row
+              ><v-row v-if="storeModel" class="pb-12"
+                >Off Percent: {{ storeModel.off_percent }}</v-row
+              >
+              <v-row v-if="storeModel" class="pb-12"
+                >Max Off Price: {{ storeModel.max_off_price }}</v-row
+              >
             </v-col>
           </v-container>
         </div>
@@ -24,6 +36,16 @@
       <div class="product-detail__description">
         <h2 class="txt pb-4">Description</h2>
         <p class="px-8">{{ product.description }}</p>
+        <div class="line"></div>
+      </div>
+
+      <div v-if="storeProducts.length" class="product-detail__stores">
+        <h2 class="txt pb-4">Stores</h2>
+        <v-btn-toggle v-model="storeModel" mandatory>
+          <v-btn v-for="store in storeProducts" :key="store.store_id">
+            <p>Store ID: {{ store.store_id }}</p>
+          </v-btn>
+        </v-btn-toggle>
         <div class="line"></div>
       </div>
 
@@ -87,6 +109,8 @@ export default {
         'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png',
       reviews: [],
       similarItems: [],
+      storeProducts: [],
+      storeModel: null,
       product: {
         id: 1,
         name: '',
@@ -100,7 +124,9 @@ export default {
     }
   },
   mounted() {
-    this.getProduct()
+    this.getProduct().then(async () => {
+      this.getAllStoresOfProduct()
+    })
     this.getSimilarProducts()
   },
   computed: {
@@ -131,6 +157,14 @@ export default {
 
       this.similarItems = data.products
     },
+    async getAllStoresOfProduct() {
+      const data = await this.$store.dispatch(
+        'product/getAllStoresOfProduct',
+        this.product.id
+      )
+
+      this.storeProducts = data.store_products
+    },
     async onSubscribe() {
       const data = await this.$store.dispatch('notification/subscribe', this.id)
 
@@ -143,5 +177,3 @@ export default {
   },
 }
 </script>
-
-<style></style>
