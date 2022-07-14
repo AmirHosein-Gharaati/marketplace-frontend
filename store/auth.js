@@ -42,10 +42,10 @@ export const actions = {
     await commit('setToken', { token: '', isAuthenticated: false })
   },
 
-  checkUserCookie({ commit, dispatch }) {
+  checkUserCookie({ commit }) {
     const token = this.$cookies.get(userTokenName)
 
-    if (token) {
+    if (!!token) {
       commit('setToken', { token: token, isAuthenticated: true })
     } else {
       commit('setToken', { token: '', isAuthenticated: false })
