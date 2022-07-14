@@ -48,10 +48,10 @@ export const actions = {
     }
   },
 
-  async getSpecificationKeysByProductId({ commit }, id) {
+  async getSpecificationKeysByCategoryId({ commit }, categoryId) {
     try {
       const res =
-        await this.$repositories.product.getSpecificationKeysByProductId(id)
+        await this.$repositories.product.getSpecificationKeysByCategoryId(categoryId)
 
       return res.data
     } catch (error) {

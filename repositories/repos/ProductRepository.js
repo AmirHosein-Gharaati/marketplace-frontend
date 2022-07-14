@@ -17,8 +17,8 @@ export default ($axios) => ({
     return $axios.get(`${resource}/price_range/${categoryId}`)
   },
 
-  getSpecificationKeysByProductId(productId) {
-    return $axios.get(`${resource}/specifications/${productId}`)
+  getSpecificationKeysByCategoryId(categoryId) {
+    return $axios.get(`${resource}/specifications/${categoryId}`)
   },
 
   getProductsByCategoryId(categoryId) {
