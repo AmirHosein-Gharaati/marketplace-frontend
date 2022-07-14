@@ -31,7 +31,7 @@
             placeholder="Message"
             class="mx-4"
           ></v-text-field>
-          <v-btn class="mx-4">Send</v-btn>
+          <v-btn class="mx-4" @click="sendMessage">Send</v-btn>
         </div>
       </div>
     </div>
@@ -50,25 +50,37 @@ export default {
   data() {
     return {
       inputFieldModel: null,
-      messages: [
-        {
-          id: 1,
-          ticket_id: 1,
-          sender_id: 1,
-          message_text: 'This is sender message!',
-          status: 'sent',
-          created_at: '2022-07-10T13:01:36.026075+04:30',
-        },
-        {
-          id: 1,
-          ticket_id: 1,
-          sender_id: 2,
-          message_text: 'Hello you problem is non sense to me. Go to Hell! ',
-          status: 'sent',
-          created_at: '2022-07-10T13:01:36.026075+04:30',
-        },
-      ],
+      messages: [],
     }
+  },
+  mounted() {
+    this.loadMessages()
+  },
+  methods: {
+    async loadMessages() {
+      const payload = {
+        ticketId: this.id,
+        offsetValue: 0,
+      }
+
+      const data = await this.$store.dispatch('ticket/loadChats', payload)
+
+      this.messages = data.messages
+    },
+    async sendMessage() {
+      const payload = {
+        ticketId: this.id,
+        data: {
+          text: this.inputFieldModel,
+        },
+      }
+
+      const data = await this.$store.dispatch('ticket/sendMessage', payload)
+
+      if (data.status == 'ok') {
+        /// load messages
+      }
+    },
   },
   computed: {
     user() {
