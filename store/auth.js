@@ -12,7 +12,7 @@ export const actions = {
     try {
       const res = await this.$repositories.auth.login(payload)
       const { data: token } = res.data
-      await commit('setToken', { token: token, isAuthenticated: true })
+      commit('setToken', { token: token, isAuthenticated: true })
 
       return res.data
     } catch (error) {

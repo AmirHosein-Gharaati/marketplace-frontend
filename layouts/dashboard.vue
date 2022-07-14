@@ -251,11 +251,11 @@ export default {
   },
   methods: {
     async init() {
-      await this.setUser()
+      await this.getUserData()
       this.getNotifications()
       this.getPendingNotifications()
     },
-    async setUser() {
+    async getUserData() {
       await this.$store.dispatch('user/getUserData')
     },
     async getNotifications() {

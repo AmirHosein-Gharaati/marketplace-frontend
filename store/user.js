@@ -16,7 +16,7 @@ export const actions = {
   async getUserData({ commit }) {
     try {
       const res = await this.$repositories.user.get()
-      await commit('setUser', res.data.user)
+      commit('setUser', res.data.user)
 
       return res.data
     } catch (error) {

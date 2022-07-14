@@ -1,8 +1,12 @@
 export default function ({ $axios, store }, inject) {
   const axiosClient = $axios.create()
-  const token = store.getters['auth/getToken']
 
-  axiosClient.setToken(token, 'Bearer')
+  axiosClient.onRequest((config) => {
+    const token = store.getters['auth/getToken']
+    if (!!token) {
+      config.headers.common['Authorization'] = `Bearer ${token}`
+    }
+  })
 
   inject('axiosClient', axiosClient)
 }
