@@ -212,6 +212,11 @@ export default {
           to: '/dashboard/orders',
           icon: 'mdi-cash',
         },
+        {
+          name: 'Ticket',
+          to: '/dashboard/ticket',
+          icon: 'mdi-ticket',
+        },
       ],
       storeRoutes: [
         {
