@@ -2,7 +2,7 @@
   <div class="products">
     <div class="filter-panel-wrapper">
       <div class="filter-panel">
-        <div class="filter-panel__item">
+        <div class="filter-panel__item" v-if="brands.length">
           <h2 class="filter-panel__item__title">Brand</h2>
           <div class="filter-panel__item__options">
             <div
@@ -10,7 +10,7 @@
               :key="item.id"
               class="px-2 filter-panel__item__option"
             >
-              <v-checkbox hide-details :label="item.name"></v-checkbox>
+              <v-checkbox hide-details :label="item"></v-checkbox>
             </div>
           </div>
           <div class="line"></div>
@@ -19,21 +19,29 @@
         <div class="filter-panel__item">
           <h2 class="filter-panel__item__title">Price</h2>
           <div class="filter-panel__item__options">
-            <v-text-field v-model="priceFrom" solo label="From"></v-text-field>
-            <v-text-field v-model="priceTo" solo label="To"></v-text-field>
+            <v-text-field
+              v-model="priceRange.min"
+              solo
+              label="From"
+            ></v-text-field>
+            <v-text-field
+              v-model="priceRange.max"
+              solo
+              label="To"
+            ></v-text-field>
           </div>
           <div class="line"></div>
         </div>
 
-        <div class="filter-panel__item">
-          <h2 class="filter-panel__item__title">Other</h2>
+        <div class="filter-panel__item" v-if="specificationKeys.length">
+          <h2 class="filter-panel__item__title">Specification Keys</h2>
           <div class="filter-panel__item__options">
             <div
-              v-for="item in brands"
-              :key="item.id"
+              v-for="item in specificationKeys"
+              :key="item"
               class="px-2 filter-panel__item__option"
             >
-              <v-checkbox hide-details :label="item.name"></v-checkbox>
+              <v-checkbox hide-details :label="item"></v-checkbox>
             </div>
           </div>
         </div>
@@ -86,6 +94,12 @@ export default {
       priceTo: null,
       sortByModel: 4,
       products: [],
+      brands: [],
+      specificationKeys: [],
+      priceRange: {
+        min: 0,
+        max: 100,
+      },
       sortItems: [
         {
           id: 1,
@@ -104,32 +118,13 @@ export default {
           name: 'Date',
         },
       ],
-      brands: [
-        {
-          id: 1,
-          name: 'Brand 1',
-        },
-        {
-          id: 2,
-          name: 'Brand 2',
-        },
-        {
-          id: 3,
-          name: 'Brand 3',
-        },
-        {
-          id: 4,
-          name: 'Brand 4',
-        },
-        {
-          id: 5,
-          name: 'Brand 5',
-        },
-      ],
     }
   },
   mounted() {
     this.getProductsByCategory()
+    this.getBrandsByCategoryId()
+    this.getPriceRangeByCategoryId()
+    this.getSpecificationKeysBydCategoryId()
   },
   computed: {
     numberOfRows() {
@@ -147,6 +142,28 @@ export default {
       )
 
       this.products = data.products
+    },
+    async getBrandsByCategoryId() {
+      const data = await this.$store.dispatch(
+        'product/getBrandsByCategoryId',
+        this.category
+      )
+
+      this.brands = data.brands
+    },
+    async getPriceRangeByCategoryId() {
+      // const data = await this.$store.dispatch(
+      //   'product/getPriceRangeByCategoryId',
+      //   this.category
+      // )
+    },
+    async getSpecificationKeysBydCategoryId() {
+      const data = await this.$store.dispatch(
+        'product/getSpecificationKeysByCategoryId',
+        this.category
+      )
+
+      this.specificationKeys = data.specification_keys
     },
   },
 }

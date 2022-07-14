@@ -50,18 +50,20 @@
         <div class="line"></div>
       </div>
 
-      <!-- <div>
+      <div v-if="similarItems.length">
         <h2 class="txt pb-4">Similar items</h2>
         <section>
           <v-container>
             <v-row>
-              <v-col v-for="n in 5" :key="n">
-                <CardItem />
+              <v-col v-for="index in 5" :key="index">
+                <template v-if="index <= similarItems.length">
+                  <CardItem :product="similarItems[index - 1]" />
+                </template>
               </v-col>
             </v-row>
           </v-container>
         </section>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -84,6 +86,7 @@ export default {
       defaultImageUrl:
         'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png',
       reviews: [],
+      similarItems: [],
       product: {
         id: 1,
         name: '',
@@ -96,13 +99,9 @@ export default {
       },
     }
   },
-  beforeCreate() {
-    if (!this.$store.getters['auth/getIsAuthenticated']) {
-      this.$router.replace('./')
-    }
-  },
   mounted() {
     this.getProduct()
+    this.getSimilarProducts()
   },
   computed: {
     isAuthenticated() {
@@ -123,6 +122,14 @@ export default {
         this.id
       )
       if (reviewsData.reviews) this.reviews = reviewsData.reviews
+    },
+    async getSimilarProducts() {
+      const data = await this.$store.dispatch(
+        'product/getSimilarProducts',
+        this.id
+      )
+
+      this.similarItems = data.products
     },
     async onSubscribe() {
       const data = await this.$store.dispatch('notification/subscribe', this.id)
