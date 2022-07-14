@@ -10,9 +10,6 @@
     >
       <div class="navbar-wrapper">
         <div class="navbar__left">
-          <v-app-bar-nav-icon @click="drawer = true"> </v-app-bar-nav-icon>
-          <span class="ml-n2 mr-2 font-weight-bold">Categories</span>
-
           <router-link
             v-for="route in routes"
             :key="route.name"
@@ -99,29 +96,6 @@
       </div>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary>
-      <v-list nav dense>
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
-
     <v-main class="layout-dashboard">
       <v-navigation-drawer right fixed app permanent>
         <v-list>
@@ -192,7 +166,6 @@ export default {
       notificationButtonPressed: false,
       fixed: false,
       title: 'Marketplace',
-      drawer: false,
       group: null,
       searchModel: null,
       routes: [
@@ -211,6 +184,11 @@ export default {
           name: 'Orders',
           to: '/dashboard/orders',
           icon: 'mdi-cash',
+        },
+        {
+          name: 'Ticket',
+          to: '/dashboard/ticket',
+          icon: 'mdi-ticket',
         },
       ],
       storeRoutes: [

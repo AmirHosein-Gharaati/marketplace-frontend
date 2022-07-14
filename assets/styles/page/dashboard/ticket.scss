@@ -1,0 +1,35 @@
+.ticket {
+  @include mixin-dashboard;
+  flex-direction: column;
+  overflow-y: auto;
+
+  .v-data-table,
+  .v-card {
+    width: 95% !important;
+  }
+
+  .v-data-table {
+    tr {
+      cursor: pointer;
+    }
+  }
+
+  &__create {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 $padding-lg;
+
+    .v-input__control,
+    .v-input {
+      max-width: 300px !important;
+    }
+  }
+}
+
+.ticket-detail {
+  @include mixin-dashboard;
+  flex-direction: column;
+  overflow-y: auto;
+}
