@@ -15,7 +15,7 @@
         </v-card-title>
         <v-data-table
           :headers="headers"
-          :items="ticketItems"
+          :items="tickets"
           :items-per-page="5"
           :search="search"
           @click:row="navigateToTicket"
@@ -46,15 +46,6 @@ export default {
         },
         { text: 'Employee ID', value: 'employee_id' },
         { text: 'Type', value: 'ticket_type_id' },
-      ],
-      ticketItems: [
-        {
-          id: 1,
-          user_id: 1,
-          employee_id: null,
-          ticket_type_id: 1,
-          created_at: '2022-07-10T12:56:57.054635+04:30',
-        },
       ],
     }
   },
