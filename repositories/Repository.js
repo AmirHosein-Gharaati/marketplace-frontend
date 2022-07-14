@@ -12,7 +12,7 @@ export default ({ $axios, $axiosClient }) => {
     auth: AuthRepository($axios),
     user: UserRepository($axiosClient),
     category: CategoriesRepository($axios),
-    product: ProductRepository($axios),
+    product: ProductRepository({ $axios, $axiosClient }),
     review: ReviewRepository($axiosClient),
     vote: VoteRepository($axiosClient),
     address: AddressRepository($axiosClient),

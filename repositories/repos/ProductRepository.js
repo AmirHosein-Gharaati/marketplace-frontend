@@ -1,6 +1,6 @@
 const resource = '/products'
 
-export default ($axios) => ({
+export default ({ $axios, $axiosClient }) => ({
   getAllProducts() {
     return $axios.get(`${resource}/stores/`, data)
   },
@@ -23,5 +23,13 @@ export default ($axios) => ({
 
   getProductsByCategoryId(categoryId) {
     return $axios.get(`${resource}/category/${categoryId}`)
+  },
+
+  getSimilarProducts(id) {
+    return $axiosClient.get(`${resource}/similar/${id}`)
+  },
+
+  getFrequentlyBoughtTogetherProducts(id) {
+    return $axiosClient.get(`${resource}/similar/${id}`)
   },
 })

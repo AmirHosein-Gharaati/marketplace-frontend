@@ -51,7 +51,9 @@ export const actions = {
   async getSpecificationKeysByCategoryId({ commit }, categoryId) {
     try {
       const res =
-        await this.$repositories.product.getSpecificationKeysByCategoryId(categoryId)
+        await this.$repositories.product.getSpecificationKeysByCategoryId(
+          categoryId
+        )
 
       return res.data
     } catch (error) {
@@ -64,6 +66,16 @@ export const actions = {
       const res = await this.$repositories.product.getProductsByCategoryId(
         categoryId
       )
+
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
+  async getSimilarProducts({ commit }, id) {
+    try {
+      const res = await this.$repositories.product.getSimilarProducts(id)
 
       return res.data
     } catch (error) {
