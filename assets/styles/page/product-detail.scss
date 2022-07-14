@@ -33,6 +33,10 @@
   }
 
   &__reviews {
+    &__add {
+      color: $color-text;
+    }
+
     &__list {
       display: flex;
       flex-direction: column;
