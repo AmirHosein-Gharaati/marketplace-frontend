@@ -8,12 +8,12 @@ export const state = () => ({
 })
 
 export const actions = {
-  async login({ dispatch }, payload) {
+  async login({ commit }, payload) {
     try {
       const res = await this.$repositories.auth.login(payload)
       const { data: token } = res.data
-      await dispatch('setUserToken', token)
-      
+      await commit('setToken', { token: token, isAuthenticated: true })
+
       return res.data
     } catch (error) {
       console.log(error)
@@ -46,23 +46,18 @@ export const actions = {
     const token = this.$cookies.get(userTokenName)
 
     if (token) {
-      dispatch('setUserToken', token)
+      commit('setToken', { token: token, isAuthenticated: true })
     } else {
-      this.$cookies.remove(userTokenName)
       commit('setToken', { token: '', isAuthenticated: false })
     }
-  },
-
-  setUserToken({ commit }, token) {
-    this.$cookies.set(userTokenName, token, {
-      maxAge: 60 * 60 * 24 * 3,
-    })
-    commit('setToken', { token: token, isAuthenticated: true })
   },
 }
 
 export const mutations = {
   setToken(state, { token, isAuthenticated }) {
+    this.$cookies.set(userTokenName, token, {
+      maxAge: 60 * 60 * 24 * 3,
+    })
     state.auth.token = token
     state.auth.isAuthenticated = isAuthenticated
   },
