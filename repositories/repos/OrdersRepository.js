@@ -21,7 +21,7 @@ export default ($axiosClient) => ({
     return $axiosClient.post(`${resource}/add_product/${orderId}`, data)
   },
 
-  removeProductFromOrder({ orderId }) {
+  removeProductFromOrder(orderId) {
     /// ??
     return $axiosClient.delete(`${resource}/remove_product/${orderId}`)
   },
