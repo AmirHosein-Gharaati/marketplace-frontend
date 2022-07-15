@@ -33,6 +33,16 @@ export const actions = {
     }
   },
 
+  async unsubscribe(_, productId) {
+    try {
+      const res = await this.$repositories.notification.unsubscribe(productId)
+
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
   async sendSeen(_, productId) {
     try {
       const res = await this.$repositories.notification.sendSeen(productId)

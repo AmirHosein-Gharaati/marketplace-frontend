@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     getProductByIndex(row, col) {
-      return this.products[(row - 1) * 5 - (col - 1)]
+      return this.products[(row - 1) * 5 + (col - 1)]
     },
     async getProductsByCategory() {
       const data = await this.$store.dispatch(
@@ -152,10 +152,12 @@ export default {
       this.brands = data.brands
     },
     async getPriceRangeByCategoryId() {
-      // const data = await this.$store.dispatch(
-      //   'product/getPriceRangeByCategoryId',
-      //   this.category
-      // )
+      const data = await this.$store.dispatch(
+        'product/getPriceRangeByCategoryId',
+        this.category
+      )
+
+      this.priceRange = data.price_range
     },
     async getSpecificationKeysBydCategoryId() {
       const data = await this.$store.dispatch(

@@ -54,46 +54,18 @@ export default {
         { text: 'Date', value: 'date' },
         { text: 'Price (Rials)', value: 'price' },
       ],
-      orderItems: [
-        {
-          id: 1,
-          date: '2018 Jan 19 12:38 PM',
-          price: '298000 Rials',
-        },
-        {
-          id: 2,
-          date: '2018 Jan 19 12:38 PM',
-          price: '298000 Rials',
-        },
-        {
-          id: 3,
-          date: '2018 Jan 19 12:38 PM',
-          price: '298000 Rials',
-        },
-        {
-          id: 4,
-          date: '2018 Jan 19 12:38 PM',
-          price: '298000 Rials',
-        },
-        {
-          id: 5,
-          date: '2018 Jan 19 12:38 PM',
-          price: '298000 Rials',
-        },
-        {
-          id: 6,
-          date: '2018 Jan 19 12:38 PM',
-          price: '298000 Rials',
-        },
-        {
-          id: 7,
-          date: '2018 Jan 19 12:38 PM',
-          price: '298000 Rials',
-        },
-      ],
+      orderItems: [],
     }
   },
+  mounted() {
+    this.getAllOrders()
+  },
   methods: {
+    async getAllOrders() {
+      const data = await this.$store.dispatch('order/getAllOrders')
+
+      this.orderItems = data.orders
+    },
     navigate(value) {
       const { id } = value
       this.$router.push(`/dashboard/orders/${id}`)
@@ -101,5 +73,3 @@ export default {
   },
 }
 </script>
-
-<style></style>

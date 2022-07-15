@@ -19,7 +19,7 @@ export default ($axiosClient) => ({
         offset: offsetValue,
       },
     }
-    return $axiosClient.get(`${resource}/${ticketId}`, config)
+    return $axiosClient.get(`${resource}/${ticketId}/`, config)
   },
 
   create(ticketTypeId) {

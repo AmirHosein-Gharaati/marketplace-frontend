@@ -69,6 +69,13 @@ export const actions = {
       console.log(error)
     }
   },
+
+  addMessage({ commit, getters }, message) {
+    const newChats = getters['getChats']
+    newChats.push(message)
+
+    commit('setChats', newChats)
+  },
 }
 
 export const mutations = {

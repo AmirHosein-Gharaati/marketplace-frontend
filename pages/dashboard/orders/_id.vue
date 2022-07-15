@@ -4,16 +4,10 @@
       <h2 class="pb-4">Order Detail</h2>
       <div class="order-detail__content">
         <div class="item-info black white--text mb-4">
-          <div>ID</div>
-          <div>Date</div>
-          <div>Status</div>
-          <div>Store Name</div>
+          <div v-for="k in orderKeys" :key="k">{{ k }}</div>
         </div>
         <div class="item-info">
-          <div>{{ order.id }}</div>
-          <div>{{ order.date }}</div>
-          <div>{{ order.status }}</div>
-          <div>{{ order.storeName }}</div>
+          <div v-for="k in orderKeys" :key="k">{{ order[k] }}</div>
         </div>
         <v-container class="py-2 px-16">
           <div class="line"></div>
@@ -33,7 +27,7 @@
             </v-card-title>
             <v-data-table
               :headers="itemHeaders"
-              :items="order.items"
+              :items="products"
               :items-per-page="5"
               :search="search"
             ></v-data-table>
@@ -41,7 +35,7 @@
 
           <p class="pt-8">
             <span class="font-weight-bold">Total Price: </span
-            >{{ order.totalPrice }} Rials
+            >{{ totalPrice }} Rials
           </p>
         </div>
         <v-container class="py-2 px-16">
@@ -65,61 +59,54 @@
 export default {
   name: 'OrderDetail',
   layout: 'dashboard',
-  asyncData({ params, redirect }) {
+  asyncData({ params }) {
     return {
       id: params.id,
     }
   },
   data() {
     return {
+      search: null,
       itemHeaders: [
-        { text: 'ID', value: 'id' },
-        { text: 'Count', value: 'count' },
+        { text: 'ID', value: 'product_id' },
+        { text: 'Quantity', value: 'quantity' },
         { text: 'Price', value: 'price' },
-        { text: 'Discount', value: 'discount' },
       ],
+      orderKeys: ['id', 'date', 'status'],
+      products: [],
       order: {
         id: 1,
         date: '2018 Jan 13',
         status: 'Available',
-        storeName: 'PC Center',
         totalPrice: '289010',
         shippingMethod: 'Normal',
         address: 'Shiraz, Fars, Iran',
-        items: [
-          {
-            id: 1,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-          {
-            id: 2,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-          {
-            id: 3,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-          {
-            id: 4,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-          {
-            id: 5,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-        ],
       },
     }
+  },
+  mounted() {
+    this.getAllProductsInTheOrder()
+  },
+  methods: {
+    async getAllProductsInTheOrder() {
+      const data = await this.$store.dispatch(
+        'order/getAllProductsInTheOrder',
+        this.order.id
+      )
+
+      this.products = data.order_products
+    },
+  },
+  computed: {
+    totalPrice() {
+      let price = 0
+
+      this.products.forEach((product) => {
+        price += product.price
+      })
+
+      return price
+    },
   },
 }
 </script>

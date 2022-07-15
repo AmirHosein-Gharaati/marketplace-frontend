@@ -7,5 +7,5 @@ export default ($axiosClient) => ({
 
   getById(id) {
     return $axiosClient.get(`${resource}/${id}`)
-  }
+  },
 })

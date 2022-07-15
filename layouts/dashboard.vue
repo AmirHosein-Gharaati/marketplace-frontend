@@ -74,10 +74,17 @@
                 <v-list>
                   <h2 class="pt-2">Pending</h2>
                   <v-list-item
+                    class="navbar__notification__item"
                     v-for="notificationId in pendingNotifications"
                     :key="notificationId"
-                    >{{ notificationId }}</v-list-item
                   >
+                    <div class="navbar__notification__item-detail">
+                      <p>{{ notificationId }}</p>
+                      <v-btn @click="unsubscribe(notificationId)"
+                        >Unsubscribe</v-btn
+                      >
+                    </div>
+                  </v-list-item>
                 </v-list>
               </v-card-text>
 
@@ -256,6 +263,13 @@ export default {
       })
 
       console.log('Send seen event completed')
+    },
+    async unsubscribe(id) {
+      const data = await this.$store.dispatch('notification/unsubscribe', id)
+
+      if (data.status == 'ok') {
+        await this.getPendingNotifications()
+      }
     },
   },
 }
