@@ -13,6 +13,10 @@ export default ($axiosClient) => ({
     return $axiosClient.post(`${resource}/subscribe/${productId}`)
   },
 
+  unsubscribe(productId) {
+    return $axiosClient.delete(`${resource}/unsubscribe/${productId}`)
+  },
+
   sendSeen(productId) {
     return $axiosClient.post(`${resource}/seen/${productId}`)
   },
