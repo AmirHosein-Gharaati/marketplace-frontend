@@ -11,53 +11,32 @@
               <v-row>
                 <v-col>
                   <v-text-field
+                    v-model="storeModel.name"
                     name="name"
                     label="Name"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    name="country"
-                    label="Country"
-                    type="text"
-                    outlined
-                  ></v-text-field>
-                  <v-text-field
-                    name="city"
-                    label="City"
-                    type="text"
-                    outlined
-                  ></v-text-field>
-                  <v-text-field
-                    name="postal code"
-                    label="Postal code"
+                    v-model="storeModel.owner"
+                    name="owner"
+                    label="Owner ID"
                     type="text"
                     outlined
                   ></v-text-field>
                 </v-col>
                 <v-col>
                   <v-text-field
-                    name="owner"
-                    label="Owner"
+                    v-model="storeModel.creator"
+                    name="creator"
+                    label="Creator ID"
                     type="text"
                     outlined
                   ></v-text-field>
                   <v-text-field
-                    name="province"
-                    label="Province"
-                    type="text"
-                    outlined
-                  ></v-text-field>
-                  <v-text-field
-                    name="street"
-                    label="Street"
-                    type="text"
-                    outlined
-                  ></v-text-field>
-                  <v-text-field
-                    prepend-inner-icon="mdi-attachment"
-                    name="avatar"
-                    label="avatar"
+                    v-model="storeModel.avatar_url"
+                    name="avatar url"
+                    label="Avatar Url"
                     type="text"
                     outlined
                   ></v-text-field>
@@ -81,9 +60,26 @@
 export default {
   name: 'AddStore',
   layout: 'dashboard',
+  data() {
+    return {
+      storeModel: {
+        name: '',
+        description: '',
+        avatar_url: '',
+        owner: null,
+        creator: null,
+      },
+    }
+  },
   methods: {
-    onSubmit() {
-      console.log('Submitted!')
+    async onSubmit() {
+      const payload = this.storeModel
+
+      const data = await this.$store.dispatch('store/createStore', payload)
+
+      if (data.status == 'ok') {
+        this.$router.replace('./')
+      } else alert('Something went wrong!')
     },
   },
 }
