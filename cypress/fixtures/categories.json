@@ -1,0 +1,14 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "electronics",
+      "parent": null
+    },
+    {
+      "id": 5,
+      "name": "shoes",
+      "parent": null
+    }
+  ]
+}
