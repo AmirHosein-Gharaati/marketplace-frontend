@@ -6,7 +6,7 @@
       <div class="chat">
         <div class="chat__messages">
           <div
-            v-for="message in messages"
+            v-for="message in chats"
             :key="message.id"
             class="chat__messages__item-wrapper"
             :class="user.id === message.sender_id ? 'justify-end' : ''"
@@ -57,15 +57,13 @@ export default {
     this.loadMessages()
   },
   methods: {
-    async loadMessages() {
+    loadMessages() {
       const payload = {
         ticketId: this.id,
         offsetValue: 0,
       }
 
-      const data = await this.$store.dispatch('ticket/loadChats', payload)
-
-      this.messages = data.messages
+      this.$store.dispatch('ticket/loadChats', payload)
     },
     async sendMessage() {
       const payload = {
@@ -78,13 +76,16 @@ export default {
       const data = await this.$store.dispatch('ticket/sendMessage', payload)
 
       if (data.status == 'ok') {
-        /// load messages
+        this.$store.dispatch('ticket/addMessage', data.message)
       }
     },
   },
   computed: {
     user() {
       return this.$store.getters['user/getUser']
+    },
+    chats() {
+      return this.$store.getters['ticket/getChats']
     },
   },
 }
