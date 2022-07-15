@@ -55,6 +55,14 @@
 import CardItem from '@/components/CardItem.vue'
 export default {
   name: 'Homepage',
+  mounted() {
+    this.test()
+  },
+  methods: {
+    async test() {
+      const data = await this.$store.dispatch('store/getMyStores')
+    },
+  },
   components: {
     CardItem,
   },
