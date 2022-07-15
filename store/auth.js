@@ -39,7 +39,7 @@ export const actions = {
 
   async logout({ commit }) {
     await this.$cookies.remove(userTokenName)
-    await commit('setToken', { token: '', isAuthenticated: false })
+    commit('setToken', { token: '', isAuthenticated: false })
   },
 
   checkUserCookie({ commit }) {

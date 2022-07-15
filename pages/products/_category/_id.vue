@@ -3,7 +3,7 @@
     <div class="product-detail">
       <div class="product-detail__main pb-8">
         <div class="product-detail__main__left">
-          <img :src="defaultImageUrl" :alt="product.name" />
+          <nuxt-img :src="defaultImageUrl" :alt="product.name" />
         </div>
         <div class="product-detail__main__right">
           <v-container fill-height>
@@ -126,8 +126,7 @@ export default {
   },
   data() {
     return {
-      defaultImageUrl:
-        'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png',
+      defaultImageUrl: '/profile.jpg',
       reviews: [],
       similarItems: [],
       storeModel: null,
@@ -147,10 +146,7 @@ export default {
     }
   },
   mounted() {
-    this.getProduct().then(async () => {
-      this.getAllStoresOfProduct()
-    })
-    this.getSimilarProducts()
+    this.init()
   },
   computed: {
     isAuthenticated() {
@@ -161,14 +157,20 @@ export default {
     },
   },
   methods: {
+    async init() {
+      await this.getProduct()
+      await this.getAllStoresOfProduct()
+      await this.getSimilarProducts()
+      await this.getReviews()
+    },
     async getProduct() {
       const productData = await this.$store.dispatch(
         'product/getProductById',
         this.id
       )
-
       this.product = productData.product
-
+    },
+    async getReviews() {
       const reviewsData = await this.$store.dispatch(
         'review/getProductsReviewSortedByDate',
         this.id

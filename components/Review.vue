@@ -10,11 +10,11 @@
     <div class="review__buttons">
       <v-btn icon @click="sendVote('up')"
         ><v-icon>mdi-thumb-up</v-icon>
-        <div v-if="review.likes">{{ review.up_votes }}</div></v-btn
+        <div v-if="review.up_votes">{{ review.up_votes }}</div></v-btn
       >
       <v-btn icon @click="sendVote('down')"
         ><v-icon>mdi-thumb-down</v-icon>
-        <div v-if="review.dislikes">{{ review.down_votes }}</div></v-btn
+        <div v-if="review.down_votes">{{ review.down_votes }}</div></v-btn
       >
     </div>
     <div class="review__end">
@@ -29,17 +29,6 @@ export default {
   props: ['review'],
   data() {
     return {
-      review2: {
-        id: 0,
-        product_id: 1,
-        store_id: 1,
-        user_id: 1,
-        rate: 4.1,
-        review_text: 'text',
-        created_at: 'Date Time',
-        up_votes: 0,
-        down_votes: 0,
-      },
       user_review: {
         first_name: '',
         last_name: '',
@@ -47,6 +36,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.review)
     this.getUser(this.review.user_id)
   },
   methods: {
@@ -57,13 +47,14 @@ export default {
         down_vote: value == 'down' ? false : true,
       }
 
-      const data = await this.$store.dispatch('vote/createVote', payload)
-      console.log(data)
+      if (value == 'up') this.review.up_votes++
+      else this.review.down_votes++
+
+      await this.$store.dispatch('vote/createVote', payload)
     },
 
     async getUser(id) {
-      const data = await this.$store.dispatch('user/getById', id)
-
+      const data = await this.$store.dispatch('user/getUserById', id)
       this.user_review = data.user
     },
   },
