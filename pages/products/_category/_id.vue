@@ -166,14 +166,13 @@ export default {
     async addReview() {
       const payload = {
         product_id: this.product.id,
-        store_id: 1,
+        store_id: 1, // TODO
         rate: this.ratingStarModel / 2,
         review_text: this.reviewTextareaModel,
       }
-      // TODO
+      console.log(payload)
+      const data = await this.$store.dispatch('review/createReview', payload)
     },
   },
 }
 </script>
-
-<style></style>
