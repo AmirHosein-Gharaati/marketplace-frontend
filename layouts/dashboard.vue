@@ -150,6 +150,7 @@
                   v-for="route in storeRoutes"
                   :key="route.to"
                   link
+                  exact
                   :to="route.to"
                 >
                   <v-list-item-title>{{ route.name }}</v-list-item-title>
@@ -200,20 +201,16 @@ export default {
       ],
       storeRoutes: [
         {
+          name: 'My Stores',
+          to: '/dashboard/store',
+        },
+        {
           name: 'Add New Store',
           to: '/dashboard/store/add',
         },
         {
-          name: 'Edit Store',
-          to: '/dashboard/store/edit',
-        },
-        {
           name: 'Add New Product',
           to: '/dashboard/product/add',
-        },
-        {
-          name: 'Edit Product',
-          to: '/dashboard/product/edit',
         },
       ],
       availableNotifications: [],
