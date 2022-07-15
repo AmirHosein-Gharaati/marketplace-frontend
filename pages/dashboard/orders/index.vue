@@ -93,7 +93,14 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.getAllOrders()
+  },
   methods: {
+    async getAllOrders() {
+      const data = await this.$store.dispatch('order/getAllOrders')
+      console.log(data)
+    },
     navigate(value) {
       const { id } = value
       this.$router.push(`/dashboard/orders/${id}`)

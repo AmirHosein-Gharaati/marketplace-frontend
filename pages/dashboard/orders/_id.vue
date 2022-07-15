@@ -4,16 +4,10 @@
       <h2 class="pb-4">Order Detail</h2>
       <div class="order-detail__content">
         <div class="item-info black white--text mb-4">
-          <div>ID</div>
-          <div>Date</div>
-          <div>Status</div>
-          <div>Store Name</div>
+          <div v-for="k in orderKeys" :key="k">{{ k }}</div>
         </div>
         <div class="item-info">
-          <div>{{ order.id }}</div>
-          <div>{{ order.date }}</div>
-          <div>{{ order.status }}</div>
-          <div>{{ order.storeName }}</div>
+          <div v-for="k in orderKeys" :key="k">{{ order[k] }}</div>
         </div>
         <v-container class="py-2 px-16">
           <div class="line"></div>
@@ -65,24 +59,25 @@
 export default {
   name: 'OrderDetail',
   layout: 'dashboard',
-  asyncData({ params, redirect }) {
+  asyncData({ params }) {
     return {
       id: params.id,
     }
   },
   data() {
     return {
+      search: null,
       itemHeaders: [
         { text: 'ID', value: 'id' },
         { text: 'Count', value: 'count' },
         { text: 'Price', value: 'price' },
         { text: 'Discount', value: 'discount' },
       ],
+      orderKeys: ['id', 'date', 'status'],
       order: {
         id: 1,
         date: '2018 Jan 13',
         status: 'Available',
-        storeName: 'PC Center',
         totalPrice: '289010',
         shippingMethod: 'Normal',
         address: 'Shiraz, Fars, Iran',
@@ -120,6 +115,19 @@ export default {
         ],
       },
     }
+  },
+  mounted() {
+    this.getAllProductsInTheOrder()
+  },
+  methods: {
+    async getAllProductsInTheOrder() {
+      const data = await this.$store.dispatch(
+        'order/getAllProductsInTheOrder',
+        this.order.id
+      )
+
+      console.log(data)
+    },
   },
 }
 </script>
