@@ -51,6 +51,32 @@ export default {
     return {
       inputFieldModel: null,
       messages: [],
+      chats: [
+        {
+          ticket_id: 1,
+          sender_id: 1,
+          message_text: 'This is a text',
+          status: 'sent',
+        },
+        {
+          ticket_id: 1,
+          sender_id: 6,
+          message_text: 'This is a text',
+          status: 'sent',
+        },
+        {
+          ticket_id: 1,
+          sender_id: 6,
+          message_text: 'Please tell me what to do!',
+          status: 'sent',
+        },
+        {
+          ticket_id: 1,
+          sender_id: 1,
+          message_text: 'Go to HELL!',
+          status: 'sent',
+        },
+      ],
     }
   },
   mounted() {
@@ -84,9 +110,9 @@ export default {
     user() {
       return this.$store.getters['user/getUser']
     },
-    chats() {
-      return this.$store.getters['ticket/getChats']
-    },
+    // chats() {
+    //   return this.$store.getters['ticket/getChats']
+    // },
   },
 }
 </script>
