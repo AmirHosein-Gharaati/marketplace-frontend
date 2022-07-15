@@ -9,20 +9,20 @@
           <v-container fill-height>
             <v-col align-self="start">
               <v-row class="pb-12">Name: {{ product.name }}</v-row>
-              <v-row v-if="storeModel" class="pb-12"
-                >Price: {{ storeModel.price }}</v-row
+              <v-row v-if="selectedStore" class="pb-12"
+                >Price: {{ selectedStore.price }}</v-row
               >
-              <v-row v-if="storeModel" class="pb-12"
-                >Available Count: {{ storeModel.available_count }}</v-row
+              <v-row v-if="selectedStore" class="pb-12"
+                >Available Count: {{ selectedStore.available_count }}</v-row
               >
             </v-col>
             <v-col align-self="start">
               <v-row class="pb-12">Brand: {{ product.brand }}</v-row
-              ><v-row v-if="storeModel" class="pb-12"
-                >Off Percent: {{ storeModel.off_percent }}</v-row
+              ><v-row v-if="selectedStore" class="pb-12"
+                >Off Percent: {{ selectedStore.off_percent }}</v-row
               >
-              <v-row v-if="storeModel" class="pb-12"
-                >Max Off Price: {{ storeModel.max_off_price }}</v-row
+              <v-row v-if="selectedStore" class="pb-12"
+                >Max Off Price: {{ selectedStore.max_off_price }}</v-row
               >
             </v-col>
           </v-container>
@@ -109,8 +109,8 @@ export default {
         'https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-rosegold-select-2015.png',
       reviews: [],
       similarItems: [],
-      storeProducts: [],
       storeModel: null,
+      storeProducts: [],
       product: {
         id: 1,
         name: '',
@@ -132,6 +132,9 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$store.getters['auth/getIsAuthenticated']
+    },
+    selectedStore() {
+      return this.storeProducts[this.storeModel]
     },
   },
   methods: {
