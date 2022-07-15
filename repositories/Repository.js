@@ -9,6 +9,7 @@ import NotificationRepository from './repos/NotificationRepository'
 import TicketRepository from './repos/TicketRepository'
 import StoreRepository from './repos/StoreRepository'
 import OrdersRepository from './repos/OrdersRepository'
+import WarrantyRepository from './repos/WarrantyRepository'
 
 export default ({ $axios, $axiosClient }) => {
   return {
@@ -23,5 +24,6 @@ export default ({ $axios, $axiosClient }) => {
     ticket: TicketRepository($axiosClient),
     store: StoreRepository($axiosClient),
     order: OrdersRepository($axiosClient),
+    warranty: WarrantyRepository({ $axios, $axiosClient }),
   }
 }
