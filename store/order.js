@@ -13,6 +13,16 @@ export const actions = {
     }
   },
 
+  async getOrderByOrderId(_, orderId) {
+    try {
+      const res = await this.$repositories.order.getOrderByOrderId(orderId)
+
+      return res.data
+    } catch (error) {
+      console.log(error)
+    }
+  },
+
   async isUserPaidTheOrder(_, orderId) {
     try {
       const res = await this.$repositories.order.isUserPaidTheOrder(orderId)

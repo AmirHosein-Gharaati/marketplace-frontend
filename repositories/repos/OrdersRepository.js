@@ -5,6 +5,10 @@ export default ($axiosClient) => ({
     return $axiosClient.get(`${resource}/me`)
   },
 
+  getOrderByOrderId(orderId) {
+    return $axiosClient.get(`${resource}/${orderId}`)
+  },
+
   isUserPaidTheOrder(orderId) {
     return $axiosClient.get(`${resource}/check_payment_status/${orderId}`)
   },
@@ -31,7 +35,7 @@ export default ($axiosClient) => ({
   },
 
   getAllProductsInTheOrder(orderId) {
-    return $axiosClient.get(`${resource}/${orderId}`)
+    return $axiosClient.get(`${resource}/products/${orderId}`)
   },
 
   payOrder({ orderId, data }) {
