@@ -27,7 +27,7 @@
             </v-card-title>
             <v-data-table
               :headers="itemHeaders"
-              :items="order.items"
+              :items="products"
               :items-per-page="5"
               :search="search"
             ></v-data-table>
@@ -35,7 +35,7 @@
 
           <p class="pt-8">
             <span class="font-weight-bold">Total Price: </span
-            >{{ order.totalPrice }} Rials
+            >{{ totalPrice }} Rials
           </p>
         </div>
         <v-container class="py-2 px-16">
@@ -68,12 +68,12 @@ export default {
     return {
       search: null,
       itemHeaders: [
-        { text: 'ID', value: 'id' },
-        { text: 'Count', value: 'count' },
+        { text: 'ID', value: 'product_id' },
+        { text: 'Quantity', value: 'quantity' },
         { text: 'Price', value: 'price' },
-        { text: 'Discount', value: 'discount' },
       ],
       orderKeys: ['id', 'date', 'status'],
+      products: [],
       order: {
         id: 1,
         date: '2018 Jan 13',
@@ -81,38 +81,6 @@ export default {
         totalPrice: '289010',
         shippingMethod: 'Normal',
         address: 'Shiraz, Fars, Iran',
-        items: [
-          {
-            id: 1,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-          {
-            id: 2,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-          {
-            id: 3,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-          {
-            id: 4,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-          {
-            id: 5,
-            count: 5,
-            price: '789020',
-            discount: 0,
-          },
-        ],
       },
     }
   },
@@ -126,7 +94,18 @@ export default {
         this.order.id
       )
 
-      console.log(data)
+      this.products = data.order_products
+    },
+  },
+  computed: {
+    totalPrice() {
+      let price = 0
+
+      this.products.forEach((product) => {
+        price += product.price
+      })
+
+      return price
     },
   },
 }
