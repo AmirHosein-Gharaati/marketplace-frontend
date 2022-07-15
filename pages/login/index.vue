@@ -11,6 +11,7 @@
               <v-card-text>
                 <v-form @submit.prevent="submit">
                   <v-text-field
+                    data-cy="login"
                     v-model="emailModel"
                     prepend-icon="mdi-email"
                     name="login"
@@ -18,6 +19,7 @@
                     type="text"
                   ></v-text-field>
                   <v-text-field
+                    data-cy="password"
                     v-model="passwordModel"
                     id="password"
                     prepend-icon="mdi-lock"
@@ -29,7 +31,9 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn type="submit" @click="onSubmit()">Login</v-btn>
+                <v-btn data-cy="submit" type="submit" @click="onSubmit()"
+                  >Login</v-btn
+                >
               </v-card-actions>
             </v-card>
           </v-flex>
