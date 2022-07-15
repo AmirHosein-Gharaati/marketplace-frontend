@@ -6,7 +6,7 @@ export const state = () => ({
 export const actions = {
   async createReview(_, payload) {
     try {
-      const res = await this.$repositories.review.createReview({
+      const res = await this.$repositories.review.create({
         payload,
       })
 

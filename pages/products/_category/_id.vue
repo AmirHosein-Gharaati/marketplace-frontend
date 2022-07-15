@@ -64,9 +64,30 @@
         <div class="line"></div>
       </div>
 
-      <div v-if="reviews.length" class="product-detail__reviews">
+      <div class="product-detail__reviews">
         <h2 class="txt pb-4">Reviews</h2>
-        <div class="product-detail__reviews__list">
+
+        <div class="product-detail__reviews__add pb-4">
+          <h3>Review it!</h3>
+          <v-textarea
+            v-model="reviewTextareaModel"
+            solo
+            placeholder="Tell more about your idea..."
+          ></v-textarea>
+          <div class="d-flex flex-column align-center">
+            <v-rating
+              v-model="ratingStarModel"
+              color="text"
+              hover
+              length="10"
+              size="56"
+              class="pb-4"
+            ></v-rating>
+            <v-btn @click="addReview">Add review</v-btn>
+          </div>
+        </div>
+
+        <div v-if="reviews.length" class="product-detail__reviews__list">
           <Review v-for="review in reviews" :key="review.id" :review="review" />
         </div>
         <div class="line"></div>
@@ -111,6 +132,8 @@ export default {
       similarItems: [],
       storeProducts: [],
       storeModel: null,
+      reviewTextareaModel: [],
+      ratingStarModel: null,
       product: {
         id: 1,
         name: '',
@@ -173,6 +196,16 @@ export default {
       } else {
         alert('Something went wrong')
       }
+    },
+    async addReview() {
+      const payload = {
+        product_id: this.product.id,
+        store_id: 1, // TODO
+        rate: this.ratingStarModel / 2,
+        review_text: this.reviewTextareaModel,
+      }
+      console.log(payload)
+      const data = await this.$store.dispatch('review/createReview', payload)
     },
   },
 }
