@@ -7,6 +7,7 @@ import VoteRepository from './repos/VoteRepository'
 import AddressRepository from './repos/AddressRepository'
 import NotificationRepository from './repos/NotificationRepository'
 import TicketRepository from './repos/TicketRepository'
+import StoreRepository from './repos/StoreRepository'
 
 export default ({ $axios, $axiosClient }) => {
   return {
@@ -19,5 +20,6 @@ export default ({ $axios, $axiosClient }) => {
     address: AddressRepository($axiosClient),
     notification: NotificationRepository($axiosClient),
     ticket: TicketRepository($axiosClient),
+    store: StoreRepository($axiosClient),
   }
 }
