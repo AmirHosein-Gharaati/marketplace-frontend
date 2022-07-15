@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     getProductByIndex(row, col) {
-      return this.products[(row - 1) * 5 - (col - 1)]
+      return this.products[(row - 1) * 5 + (col - 1)]
     },
     async getProductsByCategory() {
       const data = await this.$store.dispatch(
