@@ -152,10 +152,12 @@ export default {
       this.brands = data.brands
     },
     async getPriceRangeByCategoryId() {
-      // const data = await this.$store.dispatch(
-      //   'product/getPriceRangeByCategoryId',
-      //   this.category
-      // )
+      const data = await this.$store.dispatch(
+        'product/getPriceRangeByCategoryId',
+        this.category
+      )
+
+      this.priceRange = data.price_range
     },
     async getSpecificationKeysBydCategoryId() {
       const data = await this.$store.dispatch(
